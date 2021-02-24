@@ -26,6 +26,7 @@
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.gnome3.enable = true;
+  services.xserver.desktopManager.xterm.enable = true;
 
   environment.variables = {
     EDITOR = "vim";
@@ -37,5 +38,14 @@
     vim
     firefox
   ];
+
+  hardware.pulseaudio = {
+    enable = true;
+    package = pkgs.pulseaudioFull;
+  };
+
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   system.stateVersion = "20.09"; # Did you read the comment?
 }

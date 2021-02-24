@@ -25,9 +25,10 @@
       qutebrowser
 
       # communication
-      tdesktop
       signal-desktop
       slack
+      tdesktop
+      zoom-us
 
       # drawing etc.
       # use krita appimage until the bug with wacom tablets are fixed
@@ -47,7 +48,8 @@
       # password
       keepassxc
 
-      # pdf
+      # office & pdf
+      libreoffice
       zathura
 
       # programming
@@ -57,10 +59,19 @@
 
       # utilities etc.
       appimage-run
+      arandr
+      autorandr
+      dmenu
+      dunst
+      ffmpeg
+      fzf
       git
       gnupg
       htop
+      libnotify
+      lxappearance
       pavucontrol
+      playerctl
       ranger
       tree
       watch
