@@ -15,6 +15,9 @@
     nvidiaBusId = "PCI:1:0:0";
   };
 
+  # No tear
+  programs.bash.loginShellInit = "/etc/nixos/hardware/force-pipeline.sh";
+
   boot.supportedFilesystems = [ "ntfs" ];
 
   services.fstrim.enable = true;

@@ -28,6 +28,9 @@
   services.xserver.desktopManager.gnome3.enable = true;
   services.xserver.desktopManager.xterm.enable = true;
 
+  services.xserver.layout = "us,tr";
+  services.xserver.xkbOptions = "altwin:swap_lalt_lwin,shift:both_capslock,grp:rctrl_toggle";
+
   environment.variables = {
     EDITOR = "vim";
     VISUAL = "vim";
@@ -42,6 +45,7 @@
   hardware.pulseaudio = {
     enable = true;
     package = pkgs.pulseaudioFull;
+    extraConfig = "set-source-port alsa_input.pci-0000_00_1f.3.analog-stereo analog-input-mic";
   };
 
   hardware.bluetooth.enable = true;
