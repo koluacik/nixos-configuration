@@ -14,6 +14,10 @@
       vim-airline
       vim-airline-themes
       vim-nix
+      { # haskell-vim
+        plugin = haskell-vim;
+        config = builtins.readFile ./haskell-vim.vim;
+      }
       { # coc-nvim
         plugin = coc-nvim;
         config = builtins.readFile ./coc-nvim.vim;
