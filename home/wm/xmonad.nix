@@ -5,6 +5,6 @@
   xsession.windowManager.xmonad = {
     enable = true;
     enableContribAndExtras = true;
-    config = readFile ./xmonad-conf/Main.hs;
+    config = ./xmonad-conf/Main.hs;
   };
 }

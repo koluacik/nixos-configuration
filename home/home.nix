@@ -12,6 +12,7 @@
       ./git.nix
       ./gpg.nix
       ./vim/vim.nix
+      ./wm/xmonad.nix
       ./xdg.nix
     ];
 
@@ -43,7 +44,6 @@
       mpv
       qbittorrent
       spotify
-      zoom
 
       # password
       keepassxc
