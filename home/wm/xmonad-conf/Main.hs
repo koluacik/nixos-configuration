@@ -1,6 +1,54 @@
 import XMonad
+import XMonad.Hooks.DynamicBars
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops (ewmh, fullscreenEventHook)
+import XMonad.Hooks.ManageDocks
+import XMonad.Util.Run (spawnPipe)
+import XMonad.Util.EZConfig (additionalKeys, additionalKeysP)
+import System.Taffybar.Support.PagerHints (pagerHints)
 
 main :: IO ()
-main = xmonad def
-    { terminal = "alacritty"
-    }
+main = xmonad
+    . docks
+    . ewmh
+    . pagerHints
+    $ def
+        { terminal = "alacritty"
+        , startupHook = myStartupHook
+        , layoutHook = avoidStruts (layoutHook def)
+        , logHook = myBarsPP
+        , modMask = mod4Mask
+        }
+    `additionalKeysP` mediaKeys
+
+myStartupHook = dynStatusBarStartup startBar killBars
+  where startBar (S id') = spawnPipe $ "xmobar -x " ++ show id'
+        killBars = return ()
+
+myBarsPP = multiPP focusedPP unfocusedPP
+  where
+    focusedPP = xmobarPP
+        {-
+        { ppCurrent = xmobarColor (selectColor' "color3") "" . wrap "[" "]"
+        , ppTitle = const ""
+        , ppVisible = const ""
+        , ppVisibleNoWindows = Just $ const ""
+        , ppHidden = xmobarColor (selectColor' "color7") "" . wrap "<" ">"
+        , ppUrgent = xmobarColor (selectColor' "Color17") "" . wrap "[" "]"
+        , ppSep = " | "
+        }
+        -}
+    unfocusedPP = focusedPP
+      --{ ppCurrent = xmobarColor (selectColor' "color7") "" . wrap "[" "]" }
+      --
+
+mediaKeys =
+    [ ("<XF86AudioPlay>"        , spawn "playerctl play-pause")
+    , ("<XF86AudioPrev>"        , spawn "playerctl previous")
+    , ("<XF86AudioNext>"        , spawn "playerctl next")
+    , ("<XF86AudioRaiseVolume>" , spawn "amixer -D pulse sset Master 5%+")
+    , ("<XF86AudioLowerVolume>" , spawn "amixer -D pulse sset Master 5%-")
+    , ("<XF86MonBrightnessUp>"  , spawn "brightnessctl s +10%")
+    , ("<XF86MonBrightnessDown>", spawn "brightnessctl s 10%-")
+    ]
+
