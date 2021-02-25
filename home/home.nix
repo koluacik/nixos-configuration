@@ -21,6 +21,10 @@
 
     home.packages = with pkgs; [
 
+      # bar
+      taffybar
+      xmobar
+
       # browsers
       chromium
       qutebrowser
@@ -45,6 +49,9 @@
       qbittorrent
       spotify
 
+      # mail
+      thunderbird
+
       # password
       keepassxc
 
@@ -61,6 +68,7 @@
       appimage-run
       arandr
       autorandr
+      brightnessctl
       dmenu
       dunst
       ffmpeg
