@@ -5,6 +5,9 @@
     ./user.nix
   ];
 
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+
   home-manager.users.koluacik = { config, pkgs, ... }:  {
     imports = [
       ./alacritty/alacritty.nix
@@ -16,13 +19,9 @@
       ./xdg.nix
     ];
 
-    nixpkgs.config.allowUnfree = true;
-
-
     home.packages = with pkgs; [
 
       # bar
-      taffybar
       xmobar
 
       # browsers
@@ -48,6 +47,7 @@
       mpv
       qbittorrent
       spotify
+      steam
 
       # mail
       thunderbird
@@ -63,6 +63,7 @@
       clang-tools
       gcc
       ghc
+      jdk
 
       # utilities etc.
       appimage-run
@@ -81,9 +82,11 @@
       pavucontrol
       playerctl
       ranger
+      spectacle
       tree
       watch
       xclip
+      xf86_input_wacom
     ];
   };
 }
