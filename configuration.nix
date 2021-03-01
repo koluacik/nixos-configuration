@@ -10,6 +10,11 @@
     ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.chromium.enableWideVine = true;
+
+  nixpkgs.overlays = [
+    (import ./overlays/xmonad-overlay.nix)
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -29,11 +34,12 @@
   services.xserver.desktopManager.xterm.enable = true;
 
   services.xserver.layout = "us,tr";
-  services.xserver.xkbOptions = "altwin:swap_lalt_lwin,shift:both_capslock,grp:rctrl_toggle";
+  services.xserver.xkbOptions = "altwin:swap_lalt_lwin,shift:both_capslock,grp:alt_space_toggle";
 
   environment.variables = {
     EDITOR = "vim";
     VISUAL = "vim";
+    _JAVA_AWT_WM_NONREPARENTING = "1";
   };
 
   environment.systemPackages = with pkgs; [

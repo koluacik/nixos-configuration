@@ -1,11 +1,10 @@
 import XMonad
 import XMonad.Hooks.DynamicBars
 import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.EwmhDesktops (ewmh, fullscreenEventHook)
+import XMonad.Hooks.EwmhDesktops (ewmh, emwhFullscreen)
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.EZConfig (additionalKeys, additionalKeysP)
-import System.Taffybar.Support.PagerHints (pagerHints)
 
 main :: IO ()
 main = xmonad
@@ -51,4 +50,3 @@ mediaKeys =
     , ("<XF86MonBrightnessUp>"  , spawn "brightnessctl s +10%")
     , ("<XF86MonBrightnessDown>", spawn "brightnessctl s 10%-")
     ]
-

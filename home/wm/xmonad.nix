@@ -4,10 +4,11 @@
   xsession.enable = true;
   xsession.windowManager.xmonad = {
     enable = true;
-    enableContribAndExtras = true;
+    # I do not use xmonad-extras.
+    # enableContribAndExtras = true;
     config = ./xmonad-conf/Main.hs;
     extraPackages = hp: [
-      hp.taffybar
+      hp.xmonad-contrib
     ];
   };
 

@@ -7,7 +7,6 @@ pkgs.mkShell {
       xmonad
       xmonad-contrib
       haskell-language-server
-      taffybar
     ]))
   ];
 }
