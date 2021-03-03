@@ -19,6 +19,11 @@
       ./xdg.nix
     ];
 
+    home.file."./.config/nixpkgs/overlays" = {
+      source = ../overlays;
+      recursive = true;
+    };
+
     home.packages = with pkgs; [
 
       # bar
@@ -48,6 +53,7 @@
       qbittorrent
       spotify
       steam
+      xorg.libxcb
 
       # mail
       thunderbird
