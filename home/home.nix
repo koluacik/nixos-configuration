@@ -52,8 +52,6 @@
       mpv
       qbittorrent
       spotify
-      steam
-      xorg.libxcb
 
       # mail
       thunderbird

@@ -11,6 +11,7 @@
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.chromium.enableWideVine = true;
+  nixpkgs.config.packageOverrides = pkgs: { };
 
   nixpkgs.overlays = [
     (import ./overlays/xmonad-overlay.nix)
@@ -41,6 +42,8 @@
     VISUAL = "vim";
     _JAVA_AWT_WM_NONREPARENTING = "1";
   };
+
+  programs.steam.enable = true;
 
   environment.systemPackages = with pkgs; [
     wget
