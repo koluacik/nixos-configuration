@@ -1,2 +1,3 @@
 "" nerdtree specific settings
-map <C-n> :NERDTreeToggleVCS<CR>
+map <leader><C-n> :NERDTreeToggleVCS<CR>
+map <C-n> :NERDTreeFocus<CR>

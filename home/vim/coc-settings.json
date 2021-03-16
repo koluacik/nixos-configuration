@@ -19,5 +19,10 @@
         }
       }
     }
-  }
+  },
+  "python.analysis.diagnosticMode": "workspace",
+  "python.analysis.extraPaths": ["lib", "src", "app"],
+  "python.formatting.provider": "black",
+  "python.linting.pylintEnabled": true,
+  "python.linting.pydocstyleEnabled": true
 }

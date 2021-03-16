@@ -14,6 +14,7 @@
       vim-airline
       vim-airline-themes
       vim-nix
+      NeoSolarized
       { # haskell-vim
         plugin = haskell-vim;
         config = builtins.readFile ./haskell-vim.vim;
