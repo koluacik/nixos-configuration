@@ -6,6 +6,15 @@
 
   # Intel
   # services.xserver.videoDrivers = [ "modesetting" ];
+  # services.xserver.useGlamor = true;
+
+  # Intel no tear
+  # services.xserver.videoDrivers = [ "intel" ];
+  # services.xserver.deviceSection = ''
+  #   Option "DRI" "2"
+  #   Option "TearFree" "true"
+  # '';
+
 
   # Nvidia sync mode
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -15,12 +24,15 @@
     nvidiaBusId = "PCI:1:0:0";
   };
 
+  # No tear
+  programs.bash.loginShellInit = "/etc/nixos/hardware/force-pipeline.sh";
+
   hardware.opengl.enable = true;
   hardware.opengl.driSupport32Bit = true;
   hardware.opengl.driSupport = true;
 
-  # No tear
-  programs.bash.loginShellInit = "/etc/nixos/hardware/force-pipeline.sh";
+  services.xserver.wacom.enable = true;
+  services.xserver.libinput.touchpad.naturalScrolling = true;
 
   boot.supportedFilesystems = [ "ntfs" ];
 

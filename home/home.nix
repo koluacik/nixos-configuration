@@ -24,6 +24,11 @@
       recursive = true;
     };
 
+    systemd.user.sessionVariables = {
+      SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
+      WINIT_X11_SCALE_FACTOR = "1";
+    };
+
     home.packages = with pkgs; [
 
       # bar
@@ -68,6 +73,8 @@
       gcc
       ghc
       jdk
+      poetry
+      racket
 
       # utilities etc.
       appimage-run

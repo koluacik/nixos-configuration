@@ -32,7 +32,8 @@
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.gnome3.enable = true;
-  services.xserver.desktopManager.xterm.enable = true;
+  services.xserver.windowManager.xmonad.enable = true;
+  # services.xserver.desktopManager.xterm.enable = true;
 
   services.xserver.layout = "us,tr";
   services.xserver.xkbOptions = "altwin:swap_lalt_lwin,shift:both_capslock,grp:alt_space_toggle";
