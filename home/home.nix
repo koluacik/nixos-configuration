@@ -53,10 +53,13 @@
 
       # fun!
       discord
-      neofetch
       mpv
+      neofetch
+      obs-studio
+      protontricks
       qbittorrent
       spotify
+      youtube-dl
 
       # mail
       thunderbird
@@ -69,12 +72,21 @@
       zathura
 
       # programming
+      cabal2nix
       clang-tools
       gcc
+      gdb
       ghc
+      gnumake
+      haskell-language-server
       jdk
+      manpages
+      man-pages-posix
+      nvimpager
       poetry
       racket
+      stack
+      valgrind
 
       # utilities etc.
       appimage-run
@@ -92,9 +104,12 @@
       lxappearance
       pavucontrol
       playerctl
+      qimgv
       ranger
+      scrot
       spectacle
       tree
+      unzip
       watch
       xclip
       xf86_input_wacom
