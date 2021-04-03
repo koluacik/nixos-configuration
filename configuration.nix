@@ -15,6 +15,7 @@
 
   nixpkgs.overlays = [
     (import ./overlays/xmonad-overlay.nix)
+    (import ./overlays/man-pages-posix.nix)
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -41,6 +42,7 @@
   environment.variables = {
     EDITOR = "vim";
     VISUAL = "vim";
+    PAGER = "nvimpager";
     _JAVA_AWT_WM_NONREPARENTING = "1";
   };
 
@@ -62,4 +64,8 @@
   services.blueman.enable = true;
 
   system.stateVersion = "20.09"; # Did you read the comment?
+
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  users.extraGroups.vboxusers.members = [ "koluacik" ];
 }
