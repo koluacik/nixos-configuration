@@ -4,13 +4,15 @@
 "" sane colors
 set termguicolors
 
-if exists("$ALACRITTYTHEME")
-    if $ALACRITTYTHEME ==# "dark"
+let aspath = $HOME . '/.config/alacritty/state.txt'
+if filereadable(aspath)
+    if readfile(aspath)[0] ==# "dark"
         colo default
         let g:airline_theme='dark'
         set bg=dark
         hi VertSplit gui=None
-        hi Pmenu guibg=#111111
+        hi Pmenu guibg=#222222
+        hi PmenuSel guibg=#444444
         hi SignColumn guibg=Black
     else
         colo default
@@ -18,6 +20,7 @@ if exists("$ALACRITTYTHEME")
         set bg=light
         hi VertSplit gui=None
         hi Pmenu guibg=#EEEEEE
+        hi Pmenusel guibg=#CCCCCC
         hi SignColumn guibg=White
     endif
 endif
