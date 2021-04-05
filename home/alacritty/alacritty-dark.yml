@@ -1,0 +1,40 @@
+font:
+    normal:
+        family: hack
+    size: 9.0
+
+live_config_reload: true
+
+draw_bold_text_with_bright_colors: true
+
+env:
+    ALACRITTYTHEME: dark
+
+colors:
+
+   primary:
+     background: '#000000'
+     foreground: '#ffffff'
+
+   normal:
+     black:   '#000000'
+     red:     '#cd0000'
+     green:   '#00cd00'
+     yellow:  '#cdcd00'
+     blue:    '#0000ee'
+     magenta: '#cd00cd'
+     cyan:    '#00cdcd'
+     white:   '#e5e5e5'
+
+   bright:
+     black:   '#7f7f7f'
+     red:     '#ff0000'
+     green:   '#00ff00'
+     yellow:  '#ffff00'
+     blue:    '#5c5cff'
+     magenta: '#ff00ff'
+     cyan:    '#00ffff'
+     white:   '#ffffff'
+
+key_bindings:
+    - { key: T, mods: Control|Shift, command: { program: "/run/current-system/sw/bin/bash", args: ["/home/koluacik/.config/alacritty/switch-to-light.sh"] } }

@@ -10,11 +10,16 @@
     withNodeJs = true;
     withPython3 = true;
     plugins = with pkgs.vimPlugins; [
+
+      ayu-vim
+      NeoSolarized
+      vim-one
+
       coc-json
       vim-airline
       vim-airline-themes
+
       vim-nix
-      NeoSolarized
       { # haskell-vim
         plugin = haskell-vim;
         config = builtins.readFile ./haskell-vim.vim;

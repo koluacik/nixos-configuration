@@ -1,19 +1,32 @@
 "" Sadly, setting colorscheme to dracula at init.vim after installing
 "" dracula-vim declaratively gives errors. I am using plug for it
 "" until it is fixed.
-call plug#begin('~/.vim/plugged')
-Plug 'dracula/vim'
-call plug#end()
-colo dracula
+"" sane colors
+set termguicolors
+
+if exists("$ALACRITTYTHEME")
+    if $ALACRITTYTHEME ==# "dark"
+        colo default
+        let g:airline_theme='dark'
+        set bg=dark
+        hi VertSplit gui=None
+        hi Pmenu guibg=#111111
+        hi SignColumn guibg=Black
+    else
+        colo default
+        let g:airline_theme='light'
+        set bg=light
+        hi VertSplit gui=None
+        hi Pmenu guibg=#EEEEEE
+        hi SignColumn guibg=White
+    endif
+endif
 
 "" sane splits
 set splitbelow splitright hidden
 
 "" sane editing
 set mouse=a nu
-
-"" sane colors
-set termguicolors
 
 "" sane search
 set ignorecase smartcase incsearch
@@ -35,5 +48,5 @@ au TermOpen * setlocal nonumber signcolumn=no
 set expandtab shiftwidth=4 softtabstop=-1
 
 "" sane latex (requires tex-live)
-nmap <leader>l  :!pdflatex %<CR>
-nmap <leader><leader>l  :!pdflatex --shell-escape %<CR>
+nmap <leader>l :!pdflatex %<CR>
+nmap <leader><leader>l :!pdflatex --shell-escape %<CR>

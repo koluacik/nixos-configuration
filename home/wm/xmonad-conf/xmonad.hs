@@ -27,19 +27,7 @@ myStartupHook = dynStatusBarStartup startBar killBars
 myBarsPP = multiPP focusedPP unfocusedPP
   where
     focusedPP = xmobarPP
-        {-
-        { ppCurrent = xmobarColor (selectColor' "color3") "" . wrap "[" "]"
-        , ppTitle = const ""
-        , ppVisible = const ""
-        , ppVisibleNoWindows = Just $ const ""
-        , ppHidden = xmobarColor (selectColor' "color7") "" . wrap "<" ">"
-        , ppUrgent = xmobarColor (selectColor' "Color17") "" . wrap "[" "]"
-        , ppSep = " | "
-        }
-        -}
     unfocusedPP = focusedPP
-      --{ ppCurrent = xmobarColor (selectColor' "color7") "" . wrap "[" "]" }
-      --
 
 mediaKeys =
     [ ("<XF86AudioPlay>"        , spawn "playerctl play-pause")
