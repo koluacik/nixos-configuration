@@ -37,7 +37,8 @@ endfunction
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
-nmap <leader>ca <Plug>(coc-codeaction)
+nmap <leader>ca <Plug>(coc-codeaction-cursor)
+vmap <leader>ca <Plug>(coc-codeaction-selected)
 nmap <leader>fh <Plug>(coc-float-hide)
 nmap <leader>fj <Plug>(coc-float-jump)
 nmap <leader>gd <Plug>(coc-definition)
