@@ -36,6 +36,14 @@
         plugin = nerdtree;
         config = builtins.readFile ./nerdtree.vim;
       }
+      # { # gruvbox
+      #   plugin = gruvbox;
+      #   config = builtins.readFile ./gruvbox.vim;
+      # }
+      { # NeoSolarized
+        plugin = NeoSolarized;
+        config = builtins.readFile ./solarized.vim;
+      }
     ];
   };
 }

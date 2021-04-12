@@ -7,21 +7,19 @@ set termguicolors
 let aspath = $HOME . '/.config/alacritty/state.txt'
 if filereadable(aspath)
     if readfile(aspath)[0] ==# "dark"
-        colo default
-        let g:airline_theme='dark'
+        " let g:airline_theme='dark'
         set bg=dark
-        hi VertSplit gui=None
-        hi Pmenu guibg=#222222
-        hi PmenuSel guibg=#444444
-        hi SignColumn guibg=Black
+        " hi VertSplit gui=None
+        " hi Pmenu guibg=#222222
+        " hi PmenuSel guibg=#444444
+        " hi SignColumn guibg=Black
     else
-        colo default
-        let g:airline_theme='light'
+        " let g:airline_theme='light'
         set bg=light
-        hi VertSplit gui=None
-        hi Pmenu guibg=#EEEEEE
-        hi Pmenusel guibg=#CCCCCC
-        hi SignColumn guibg=White
+        " hi VertSplit gui=None
+        " hi Pmenu guibg=#EEEEEE
+        " hi Pmenusel guibg=#CCCCCC
+        " hi SignColumn guibg=White
     endif
 endif
 
