@@ -24,5 +24,6 @@
   "python.analysis.extraPaths": ["lib", "src", "app"],
   "python.formatting.provider": "black",
   "python.linting.pylintEnabled": true,
-  "python.linting.pydocstyleEnabled": true
+  "python.linting.pydocstyleEnabled": true,
+  "codeLens.enable": true
 }
