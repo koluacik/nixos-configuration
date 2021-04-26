@@ -9,6 +9,11 @@
       ./home/home.nix
     ];
 
+  nix.extraOptions = ''
+    keep-outputs = true
+    keep-derivations = true
+  '';
+
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.chromium.enableWideVine = true;
   nixpkgs.config.packageOverrides = pkgs: { };
@@ -66,6 +71,5 @@
   system.stateVersion = "20.09"; # Did you read the comment?
 
   virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
   users.extraGroups.vboxusers.members = [ "koluacik" ];
 }

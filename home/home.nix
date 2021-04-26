@@ -29,6 +29,9 @@
       WINIT_X11_SCALE_FACTOR = "1";
     };
 
+    programs.direnv.enable = true;
+    programs.direnv.enableNixDirenvIntegration = true;
+
     home.packages = with pkgs; [
 
       # bar
@@ -82,7 +85,9 @@
       jdk
       manpages
       man-pages-posix
+      nix-index
       nvimpager
+      patchelf
       poetry
       racket
       stack
