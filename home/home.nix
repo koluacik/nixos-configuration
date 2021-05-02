@@ -58,7 +58,6 @@
       discord
       mpv
       neofetch
-      obs-studio
       protontricks
       qbittorrent
       spotify
@@ -83,10 +82,9 @@
       gnumake
       haskell-language-server
       jdk
+      kakoune
       manpages
       man-pages-posix
-      nix-index
-      nvimpager
       patchelf
       poetry
       racket
@@ -113,6 +111,7 @@
       ranger
       scrot
       spectacle
+      tabbed
       tree
       unzip
       watch

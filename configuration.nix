@@ -21,6 +21,7 @@
   nixpkgs.overlays = [
     (import ./overlays/xmonad-overlay.nix)
     (import ./overlays/man-pages-posix.nix)
+    (import ./overlays/tabbed-overlay.nix)
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -47,7 +48,6 @@
   environment.variables = {
     EDITOR = "vim";
     VISUAL = "vim";
-    PAGER = "nvimpager";
     _JAVA_AWT_WM_NONREPARENTING = "1";
   };
 

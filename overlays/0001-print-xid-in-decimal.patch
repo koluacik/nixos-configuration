@@ -1,0 +1,25 @@
+From bcdfee37d75712d904f50ea1bbb9d2661c608fbf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Deniz=20Kolua=C3=A7=C4=B1k?= <koluacik@disroot.org>
+Date: Mon, 3 May 2021 00:22:50 +0300
+Subject: [PATCH] print xid in decimal
+
+---
+ tabbed.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tabbed.c b/tabbed.c
+index eafe28a..b14b138 100644
+--- a/tabbed.c
++++ b/tabbed.c
+@@ -1355,7 +1355,7 @@ main(int argc, char *argv[])
+ 		die("%s: cannot open display\n", argv0);
+ 
+ 	setup();
+-	printf("0x%lx\n", win);
++        printf("%ld\n", win);
+ 	fflush(NULL);
+ 
+ 	if (detach) {
+-- 
+2.31.1
+
