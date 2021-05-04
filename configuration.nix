@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, options, ... }:
 
 {
   imports =
@@ -14,9 +14,13 @@
     keep-derivations = true
   '';
 
+  nix.nixPath =
+      options.nix.nixPath.default ++
+      [ "nixpkgs-overlays=/etc/nixos/overlays-compat/" ];
+
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.chromium.enableWideVine = true;
-  nixpkgs.config.packageOverrides = pkgs: { };
+  # nixpkgs.config.packageOverrides = pkgs: { };
 
   nixpkgs.overlays = [
     (import ./overlays/xmonad-overlay.nix)

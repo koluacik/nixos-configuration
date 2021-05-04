@@ -1,4 +1,17 @@
 { config, pkgs, ... }:
+let
+myKak =
+  let
+  config = pkgs.writeTextFile (rec {
+    name = "kakrc.kak";
+    destination = "/share/kak/autoload/${name}";
+    text = ''
+      colorscheme solarized-light
+      add-highlighter global/ number-lines
+    ''; });
+  in
+    pkgs.kakoune.override { plugins = with pkgs.kakounePlugins; [ kak-ansi config ]; };
+in
 
 {
   imports = [
@@ -19,10 +32,10 @@
       ./xdg.nix
     ];
 
-    home.file."./.config/nixpkgs/overlays" = {
-      source = ../overlays;
-      recursive = true;
-    };
+    # home.file."./.config/nixpkgs/overlays" = {
+    #   source = ../overlays;
+    #   recursive = true;
+    # };
 
     systemd.user.sessionVariables = {
       SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
@@ -81,8 +94,8 @@
       ghc
       gnumake
       haskell-language-server
-      jdk
-      kakoune
+      # jdk
+      adoptopenjdk-jre-openj9-bin-15  # for uppaal
       manpages
       man-pages-posix
       patchelf
@@ -90,6 +103,11 @@
       racket
       stack
       valgrind
+
+      # kak
+      # kakoune
+      myKak
+
 
       # utilities etc.
       appimage-run
