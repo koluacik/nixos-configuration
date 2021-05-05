@@ -15,7 +15,6 @@
   #   Option "TearFree" "true"
   # '';
 
-
   # Nvidia sync mode
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.prime = {

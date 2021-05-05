@@ -1,22 +1,20 @@
 { config, pkgs, options, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./hardware/hardware.nix
-      <home-manager/nixos>
-      ./home/home.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./hardware/hardware.nix
+    <home-manager/nixos>
+    ./home/home.nix
+  ];
 
   nix.extraOptions = ''
     keep-outputs = true
     keep-derivations = true
   '';
 
-  nix.nixPath =
-      options.nix.nixPath.default ++
-      [ "nixpkgs-overlays=/etc/nixos/overlays-compat/" ];
+  nix.nixPath = options.nix.nixPath.default
+    ++ [ "nixpkgs-overlays=/etc/nixos/overlays-compat/" ];
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.chromium.enableWideVine = true;
@@ -45,7 +43,8 @@
   services.xserver.windowManager.xmonad.enable = true;
 
   services.xserver.layout = "us,tr";
-  services.xserver.xkbOptions = "altwin:swap_lalt_lwin,shift:both_capslock,grp:alt_space_toggle";
+  services.xserver.xkbOptions =
+    "altwin:swap_lalt_lwin,shift:both_capslock,grp:alt_space_toggle";
 
   environment.variables = {
     EDITOR = "vim";
@@ -55,16 +54,13 @@
 
   programs.steam.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    wget
-    vim
-    firefox
-  ];
+  environment.systemPackages = with pkgs; [ wget vim firefox ];
 
   hardware.pulseaudio = {
     enable = true;
     package = pkgs.pulseaudioFull;
-    extraConfig = "set-source-port alsa_input.pci-0000_00_1f.3.analog-stereo analog-input-mic";
+    extraConfig =
+      "set-source-port alsa_input.pci-0000_00_1f.3.analog-stereo analog-input-mic";
   };
 
   hardware.bluetooth.enable = true;

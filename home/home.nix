@@ -1,27 +1,25 @@
 { config, pkgs, ... }:
 let
-myKak =
-  let
-  config = pkgs.writeTextFile (rec {
-    name = "kakrc.kak";
-    destination = "/share/kak/autoload/${name}";
-    text = ''
-      colorscheme solarized-light
-      add-highlighter global/ number-lines
-    ''; });
-  in
-    pkgs.kakoune.override { plugins = with pkgs.kakounePlugins; [ kak-ansi config ]; };
-in
+  myKak = let
+    config = pkgs.writeTextFile (rec {
+      name = "kakrc.kak";
+      destination = "/share/kak/autoload/${name}";
+      text = ''
+        colorscheme solarized-light
+        add-highlighter global/ number-lines
+      '';
+    });
+  in pkgs.kakoune.override {
+    plugins = with pkgs.kakounePlugins; [ kak-ansi config ];
+  };
 
-{
-  imports = [
-    ./user.nix
-  ];
+in {
+  imports = [ ./user.nix ];
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
-  home-manager.users.koluacik = { config, pkgs, ... }:  {
+  home-manager.users.koluacik = { config, pkgs, ... }: {
     imports = [
       ./alacritty/alacritty.nix
       ./bash.nix
@@ -95,7 +93,7 @@ in
       gnumake
       haskell-language-server
       # jdk
-      adoptopenjdk-jre-openj9-bin-15  # for uppaal
+      adoptopenjdk-jre-openj9-bin-15 # for uppaal
       manpages
       man-pages-posix
       patchelf
@@ -107,7 +105,6 @@ in
       # kak
       # kakoune
       myKak
-
 
       # utilities etc.
       appimage-run

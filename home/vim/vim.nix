@@ -12,7 +12,7 @@
     plugins = with pkgs.vimPlugins; [
 
       coc-json
-      vim-airline  
+      vim-airline
       vim-airline-themes
 
       vim-nix
