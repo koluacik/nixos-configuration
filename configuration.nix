@@ -20,7 +20,6 @@
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.chromium.enableWideVine = true;
-  # nixpkgs.config.packageOverrides = pkgs: { };
 
   nixpkgs.overlays = [
     (import ./overlays/xmonad-overlay.nix)
@@ -44,7 +43,6 @@
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.gnome3.enable = true;
   services.xserver.windowManager.xmonad.enable = true;
-  # services.xserver.desktopManager.xterm.enable = true;
 
   services.xserver.layout = "us,tr";
   services.xserver.xkbOptions = "altwin:swap_lalt_lwin,shift:both_capslock,grp:alt_space_toggle";
