@@ -1,3 +1,6 @@
+# Thank you IvanMalison!
+# https://github.com/IvanMalison/dotfiles/blob/master/dotfiles/config/xmonad/overlay.nix
+
 self: super:
 
 let
