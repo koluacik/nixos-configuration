@@ -1,6 +1,12 @@
 { config, pkgs, ... }:
 
-{
+let
+  myNeoSolarized = pkgs.vimUtils.buildVimPlugin {
+    name = "myNeoSolarized";
+    src = fetchGit ./NeoSolarized;
+  };
+
+in {
   home.file."./.config/nvim/coc-settings.json".source = ./coc-settings.json;
   programs.neovim = {
     enable = true;
@@ -14,8 +20,12 @@
       coc-json
       vim-airline
       vim-airline-themes
-
       vim-nix
+
+      { # NeoSolarized
+        plugin = myNeoSolarized;
+        config = builtins.readFile ./solarized.vim;
+      }
       { # haskell-vim
         plugin = haskell-vim;
         config = builtins.readFile ./haskell-vim.vim;
@@ -31,14 +41,6 @@
       { # nerdtree
         plugin = nerdtree;
         config = builtins.readFile ./nerdtree.vim;
-      }
-      # { # gruvbox
-      #   plugin = gruvbox;
-      #   config = builtins.readFile ./gruvbox.vim;
-      # }
-      { # NeoSolarized
-        plugin = NeoSolarized;
-        config = builtins.readFile ./solarized.vim;
       }
     ];
   };

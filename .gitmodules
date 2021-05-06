@@ -1,0 +1,3 @@
+[submodule "home/vim/NeoSolarized"]
+	path = home/vim/NeoSolarized
+	url = https://github.com/koluacik/NeoSolarized
