@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./user-private.nix ];
+  imports = [ ./private/user-private.nix ];
 
   users.users.koluacik = {
     isNormalUser = true;

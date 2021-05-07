@@ -1,3 +1,6 @@
 [submodule "home/vim/NeoSolarized"]
 	path = home/vim/NeoSolarized
 	url = git@github.com:koluacik/NeoSolarized.git
+[submodule "home/private"]
+	path = home/private
+	url = git@github.com:koluacik/private.git
