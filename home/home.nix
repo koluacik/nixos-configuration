@@ -28,12 +28,9 @@ in {
       ./vim/vim.nix
       ./wm/xmonad.nix
       ./xdg.nix
+      ./private/home-private.nix
     ];
 
-    # home.file."./.config/nixpkgs/overlays" = {
-    #   source = ../overlays;
-    #   recursive = true;
-    # };
 
     systemd.user.sessionVariables = {
       SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
