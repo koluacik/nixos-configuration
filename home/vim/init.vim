@@ -4,7 +4,7 @@
 "" sane colors
 set termguicolors
 
-let aspath = $HOME . '/.config/alacritty/state.txt'
+let aspath = $HOME . '/.config/alacritty/colorstate'
 if filereadable(aspath)
     if readfile(aspath)[0] ==# "dark"
         set bg=dark
