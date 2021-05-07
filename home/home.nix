@@ -40,6 +40,11 @@ in {
     programs.direnv.enable = true;
     programs.direnv.enableNixDirenvIntegration = true;
 
+    home.file."./.config/ranger" = {
+      source = ./ranger;
+      recursive = true;
+    };
+
     home.packages = with pkgs; [
 
       # bar
@@ -106,11 +111,14 @@ in {
       # utilities etc.
       appimage-run
       arandr
+      atool  # For ranger archive previews.
       autorandr
       brightnessctl
       dmenu
+      dragon-drop  # For drag and drop files.
       dunst
       ffmpeg
+      ffmpegthumbnailer
       fzf
       git
       gnupg
@@ -119,12 +127,14 @@ in {
       lxappearance
       pavucontrol
       playerctl
+      poppler_utils  # For ranger pdf previews.
       qimgv
       ranger
       scrot
       spectacle
       tabbed
       tree
+      ueberzug  # For ranger.
       unzip
       watch
       xclip
