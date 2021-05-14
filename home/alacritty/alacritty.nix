@@ -6,6 +6,6 @@
     recursive = true;
   };
   home.file."./.config/alacritty/base-config.yml".source = ./base-config.yml;
-  home.file."./.local/bin/switch-theme".source = ./switch-config;
+  home.file."./.local/bin/switch-theme".source = ./switch-theme;
   programs.alacritty = { enable = true; };
 }

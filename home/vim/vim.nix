@@ -5,9 +5,18 @@ let
     name = "myNeoSolarized";
     src = fetchGit ./NeoSolarized;
   };
+  taboo = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "taboo";
+    src = pkgs.fetchgit {
+      url = "https://github.com/gcmt/taboo.vim";
+      rev = "caf948187694d3f1374913d36f947b3f9fa1c22f";
+      sha256 = "06pizdnb3gr4pf5hrm3yfzkz99y9bi2vwqm85xknzgdvl1lisj99";
+    };
+  };
 
 in {
   home.file."./.config/nvim/coc-settings.json".source = ./coc-settings.json;
+  home.file."./.local/bin/reload-nvim-config".source = ./reload-nvim-config;
   programs.neovim = {
     enable = true;
     extraConfig = builtins.readFile ./init.vim;
@@ -41,6 +50,10 @@ in {
       { # nerdtree
         plugin = nerdtree;
         config = builtins.readFile ./nerdtree.vim;
+      }
+      { # taboo
+        plugin = taboo;
+        config = builtins.readFile ./taboo.vim;
       }
     ];
   };

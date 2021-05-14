@@ -17,3 +17,6 @@ if [[ "$THEME_FILE" == *"dark"* || "$FIRST_LINE" == *"dark"*  ]]; then
 else
     echo "light" > $ALACRITTY/colorstate
 fi
+
+# run nvim reload script
+reload-nvim-config
