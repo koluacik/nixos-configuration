@@ -69,6 +69,8 @@ in {
 
       # fun!
       discord
+      discord-canary
+      discord-ptb
       mpv
       neofetch
       protontricks

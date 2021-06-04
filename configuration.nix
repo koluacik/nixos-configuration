@@ -23,6 +23,7 @@
     (import ./overlays/xmonad-overlay.nix)
     (import ./overlays/man-pages-posix.nix)
     (import ./overlays/tabbed-overlay.nix)
+    (import ./overlays/discord.nix)
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -39,7 +40,7 @@
   # Enable the GNOME 3 Desktop Environment.
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.gnome3.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
   services.xserver.windowManager.xmonad.enable = true;
 
   services.xserver.layout = "us,tr";
@@ -49,6 +50,7 @@
   environment.variables = {
     EDITOR = "vim";
     VISUAL = "vim";
+    PROMPT_COMMAND = "history -a; history -n";
     _JAVA_AWT_WM_NONREPARENTING = "1";
   };
 
