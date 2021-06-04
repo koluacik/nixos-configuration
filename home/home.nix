@@ -61,8 +61,8 @@ in {
       zoom-us
 
       # drawing etc.
-      # use krita appimage until the bug with wacom tablets are fixed
       gimp
+      krita
 
       # fonts
       hack-font
@@ -83,6 +83,9 @@ in {
 
       # password
       keepassxc
+
+      # octave
+      (octaveFull.withPackages (ps: [ps.statistics]))
 
       # office & pdf
       libreoffice

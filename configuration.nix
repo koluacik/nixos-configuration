@@ -24,6 +24,7 @@
     (import ./overlays/man-pages-posix.nix)
     (import ./overlays/tabbed-overlay.nix)
     (import ./overlays/discord.nix)
+    (import ./overlays/krita.nix)
   ];
 
   # Use the systemd-boot EFI boot loader.
