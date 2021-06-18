@@ -8,13 +8,15 @@
     ./home/home.nix
   ];
 
-  nix.extraOptions = ''
-    keep-outputs = true
-    keep-derivations = true
-  '';
-
-  nix.nixPath = options.nix.nixPath.default
-    ++ [ "nixpkgs-overlays=/etc/nixos/overlays-compat/" ];
+  nix = {
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      keep-outputs = true
+      keep-derivations = true
+    '';
+    nixPath = options.nix.nixPath.default
+      ++ [ "nixpkgs-overlays=/etc/nixos/overlays-compat/" ];
+  };
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.chromium.enableWideVine = true;
