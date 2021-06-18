@@ -33,8 +33,8 @@ mediaKeys =
     [ ("<XF86AudioPlay>"        , spawn "playerctl play-pause")
     , ("<XF86AudioPrev>"        , spawn "playerctl previous")
     , ("<XF86AudioNext>"        , spawn "playerctl next")
-    , ("<XF86AudioRaiseVolume>" , spawn "amixer -D pulse sset Master 5%+")
-    , ("<XF86AudioLowerVolume>" , spawn "amixer -D pulse sset Master 5%-")
+    , ("<XF86AudioRaiseVolume>" , spawn "amixer sset Master 5%+")
+    , ("<XF86AudioLowerVolume>" , spawn "amixer sset Master 5%-")
     , ("<XF86MonBrightnessUp>"  , spawn "brightnessctl s +10%")
     , ("<XF86MonBrightnessDown>", spawn "brightnessctl s 10%-")
     ]
