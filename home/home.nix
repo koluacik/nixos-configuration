@@ -93,13 +93,13 @@ in {
 
       # programming
       cabal2nix
-      clang-tools
-      gcc
+      # clang_11
+      # clang-tools
+      # gcc
       gdb
       ghc
       gnumake
       haskell-language-server
-      # jdk
       adoptopenjdk-jre-openj9-bin-15 # for uppaal
       manpages
       man-pages-posix
