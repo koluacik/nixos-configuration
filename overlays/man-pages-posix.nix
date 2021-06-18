@@ -1,3 +1,3 @@
-self: super: {
-  man-pages-posix = self.callPackage ../nix/man-pages-posix.nix { };
+final: prev: {
+  man-pages-posix = final.callPackage ../nix/man-pages-posix.nix { };
 }
