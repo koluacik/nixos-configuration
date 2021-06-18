@@ -25,6 +25,7 @@
     (import ./overlays/tabbed-overlay.nix)
     (import ./overlays/discord.nix)
     (import ./overlays/krita.nix)
+    (import ./overlays/fstar-bin.nix)
   ];
 
   # Use the systemd-boot EFI boot loader.
