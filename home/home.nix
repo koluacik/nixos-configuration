@@ -76,6 +76,7 @@ in {
       protontricks
       qbittorrent
       spotify
+      # wineWowPackages.stable
       youtube-dl
 
       # mail
@@ -85,7 +86,7 @@ in {
       keepassxc
 
       # octave
-      (octaveFull.withPackages (ps: [ps.statistics]))
+      (octaveFull.withPackages (ps: with ps; [statistics symbolic]))
 
       # office & pdf
       libreoffice
@@ -94,8 +95,8 @@ in {
       # programming
       cabal2nix
       # clang_11
-      # clang-tools
-      # gcc
+      clang-tools
+      gcc
       gdb
       ghc
       gnumake
@@ -130,6 +131,9 @@ in {
       htop
       libnotify
       lxappearance
+      nixfmt
+      nix-index
+      obs-studio
       pavucontrol
       playerctl
       poppler_utils  # For ranger pdf previews.
@@ -138,11 +142,13 @@ in {
       scrot
       spectacle
       tabbed
+      tor-browser-bundle-bin
       tree
       ueberzug  # For ranger.
       unzip
       watch
       xclip
+      xdotool
       xf86_input_wacom
     ];
   };
