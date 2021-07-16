@@ -42,6 +42,8 @@
   networking.interfaces.eno1.useDHCP = true;
   networking.interfaces.wlo1.useDHCP = true;
 
+  services.sshd.enable = true;
+
   # Enable the GNOME 3 Desktop Environment.
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
@@ -74,7 +76,4 @@
   services.blueman.enable = true;
 
   system.stateVersion = "20.09"; # Did you read the comment?
-
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "koluacik" ];
 }
