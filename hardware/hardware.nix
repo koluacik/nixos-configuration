@@ -38,12 +38,12 @@
   services.fstrim.enable = true;
 
   fileSystems."/mnt/backup" = {
-    device = "/dev/sda1";
+    device = "/dev/disk/by-uuid/e1db43c7-2b91-4c08-b1bf-078e27752637";
     fsType = "ext4";
   };
 
   fileSystems."/mnt/hdd" = {
-    device = "/dev/sda4";
+    device = "/dev/disk/by-uuid/7CBF36EC06B19D24";
     fsType = "ntfs";
   };
 }
