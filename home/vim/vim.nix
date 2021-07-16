@@ -26,7 +26,9 @@ in {
     withPython3 = true;
     plugins = with pkgs.vimPlugins; [
 
+      coc-clangd
       coc-json
+      editorconfig-vim
       vim-airline
       vim-airline-themes
       vim-nix
