@@ -15,6 +15,22 @@
   #   Option "TearFree" "true"
   # '';
 
+  # specialisation.intel = {
+  #   inheritParentConfig = true;
+  #   configuration = {
+  #     services.xserver.videoDrivers = [ "modesetting" ];
+  #     services.xserver.useGlamor = true;
+  #     hardware.nvidia.prime.sync.enable = pkgs.lib.mkForce false;
+  #     programs.bash.loginShellInit = pkgs.lib.mkForce "";
+  #     hardware.opengl = {
+  #       enable = true;
+  #       driSupport = true;
+  #       driSupport32Bit = true;
+  #       extraPackages = with pkgs; [vaapiIntel libvdpau-va-gl vaapiVdpau intel-ocl];
+  #     };
+  #   };
+  # };
+
   # Nvidia sync mode
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.prime = {
@@ -45,5 +61,6 @@
   fileSystems."/mnt/hdd" = {
     device = "/dev/disk/by-uuid/7CBF36EC06B19D24";
     fsType = "ntfs";
+    options = [ "rw" "uid=1000" ];
   };
 }
