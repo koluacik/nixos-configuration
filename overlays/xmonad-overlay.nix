@@ -7,14 +7,14 @@ let
   xmonadGH = prev.fetchFromGitHub {
     owner = "xmonad";
     repo = "xmonad";
-    rev = "131fd3669f6c2952d3094016d14873fdfe66f98c";
-    sha256 = "1swn4lfdvbancc2vqlidprr8lnllq9cwqiknri5q9ikg4n2clc7r";
+    rev = "af354f7528ada1de451365a0f5138ef10a318360";
+    sha256 = "08iifadqwgczmkz727gx0k8vm2xpincp4binpw8zdk8z4c7a3bxj";
   };
   xmonad-contribGH = prev.fetchFromGitHub {
     owner = "xmonad";
     repo = "xmonad-contrib";
-    rev = "a99c76cce48ce70cf30094a3a74f54bcb03eb3d7";
-    sha256 = "11p3x469yy2c9q3vir600s21lmb1vaki1qc9pgb7vm900l0cr3ym";
+    rev = "da2fb360b81c969854a66e246cc37a0864edf8d0";
+    sha256 = "0kf5jvfdz017qbrfwlk6z54msf6klrm3cd71dl977r54lmwg9m98";
   };
 
 in {

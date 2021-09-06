@@ -1,19 +1,4 @@
-{ config, pkgs, ... }:
-let
-  myKak = let
-    config = pkgs.writeTextFile (rec {
-      name = "kakrc.kak";
-      destination = "/share/kak/autoload/${name}";
-      text = ''
-        colorscheme solarized-light
-        add-highlighter global/ number-lines
-      '';
-    });
-  in pkgs.kakoune.override {
-    plugins = with pkgs.kakounePlugins; [ kak-ansi config ];
-  };
-
-in {
+{ config, pkgs, ... }: {
   imports = [ ./user.nix ];
 
   home-manager.useGlobalPkgs = true;
@@ -22,15 +7,17 @@ in {
   home-manager.users.koluacik = { config, pkgs, ... }: {
     imports = [
       ./alacritty/alacritty.nix
-      ./bash.nix
+      ./bash/bash.nix
+      ./bat.nix
+      ./fzf.nix
       ./git.nix
       ./gpg.nix
+      ./kakoune/kakoune.nix
+      ./private/home-private.nix
       ./vim/vim.nix
       ./wm/xmonad.nix
       ./xdg.nix
-      ./private/home-private.nix
     ];
-
 
     systemd.user.sessionVariables = {
       SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
@@ -39,6 +26,13 @@ in {
 
     programs.direnv.enable = true;
     programs.direnv.nix-direnv.enable = true;
+
+    services.dunst = {
+      enable = true;
+      settings = { global = { max_icon_size = 32; }; };
+    };
+
+    home.file."./.XCompose".source = ./xcompose;
 
     home.file."./.config/ranger" = {
       source = ./ranger;
@@ -64,9 +58,6 @@ in {
       gimp
       krita
 
-      # fonts
-      hack-font
-
       # fun!
       discord
       discord-canary
@@ -76,7 +67,8 @@ in {
       protontricks
       qbittorrent
       spotify
-      # wineWowPackages.stable
+      tor-browser-bundle-bin
+      wineWowPackages.stable
       youtube-dl
 
       # mail
@@ -86,7 +78,7 @@ in {
       keepassxc
 
       # octave
-      (octaveFull.withPackages (ps: with ps; [statistics symbolic]))
+      (octaveFull.withPackages (ps: with ps; [ statistics symbolic ]))
 
       # office & pdf
       libreoffice
@@ -109,46 +101,48 @@ in {
       racket
       stack
       valgrind
-
-      # kak
-      # kakoune
-      myKak
+      rnix-lsp
 
       # utilities etc.
       appimage-run
       arandr
-      atool  # For ranger archive previews.
+      atool # For ranger archive previews.
       autorandr
       brightnessctl
+      countdown
       dmenu
-      dragon-drop  # For drag and drop files.
-      dunst
+      dragon-drop # For drag and drop files.
+      # dunst
+      fd
       ffmpeg
       ffmpegthumbnailer
-      fzf
+      file
       git
       gnupg
       htop
+      killall
+      kitty
       libnotify
       lxappearance
-      nixfmt
       nix-index
+      nix-prefetch-github
+      nixfmt
       obs-studio
       pavucontrol
       playerctl
-      poppler_utils  # For ranger pdf previews.
+      poppler_utils # For ranger pdf previews.
       qimgv
       ranger
       scrot
       spectacle
       tabbed
-      tor-browser-bundle-bin
       tree
-      ueberzug  # For ranger.
+      ueberzug # For ranger.
       unzip
       watch
       xclip
       xdotool
+      xsel
       xf86_input_wacom
     ];
   };

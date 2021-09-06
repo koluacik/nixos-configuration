@@ -1,10 +1,10 @@
 final: prev: {
   discord-canary = prev.discord-canary.overrideAttrs (oa: rec {
-    version = "0.0.123";
+    version = "0.0.126";
     src = prev.fetchurl {
       url =
         "https://dl-canary.discordapp.net/apps/linux/${version}/discord-canary-${version}.tar.gz";
-      sha256 = "0bijwfsd9s4awqkgxd9c2cxh7y5r06vix98qjp0dkv63r6jig8ch";
+      sha256 = "0apj1c4my17ca452wdga2zb82iqsbljbbg2fylfdvslx286r7dhj";
     };
   });
   discord-ptb = prev.discord-ptb.overrideAttrs (oa: rec {

@@ -1,0 +1,90 @@
+snippet_support = false
+verbosity = 2
+
+[server]
+timeout = 1800 # seconds = 30 minutes
+
+[language.c_cpp]
+filetypes = ["c", "cpp"]
+roots = ["compile_commands.json", ".clangd"]
+command = "clangd"
+offset_encoding = "utf-8"
+
+[language.haskell]
+filetypes = ["haskell"]
+roots = ["Setup.hs", "stack.yaml", "*.cabal"]
+command = "haskell-language-server-wrapper"
+args = ["--lsp"]
+settings_section = "haskell"
+[language.haskell.settings.haskell]
+# See https://github.com/latex-lsp/texlab/blob/e1ee8495b0f54b4411a1ffacf787efa621d8f826/src/options.rs
+# formattingProvider = "ormolu"
+[language.nix]
+filetypes = ["nix"]
+roots = ["flake.nix", "shell.nix", ".git"]
+command = "rnix-lsp"
+
+[language.python]
+filetypes = ["python"]
+roots = ["requirements.txt", "setup.py", ".git", ".hg"]
+command = "pyls"
+offset_encoding = "utf-8"
+[language.python.settings]
+# See https://github.com/palantir/python-language-server#configuration
+# and https://github.com/palantir/python-language-server/blob/develop/vscode-client/package.json
+# "pyls.configurationSources" = ["flake8"]
+
+# Semantic tokens support
+# See https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_semanticTokens
+# for the default list of tokens and modifiers.
+# However, many language servers implement their own values.
+# Make sure to check the output of `lsp-capabilities` and each server's documentation and source code as well.
+# Examples:
+# - TypeScript: https://github.com/microsoft/vscode-languageserver-node/blob/2645fb54ea1e764aff71dee0ecc8aceff3aabf56/client/src/common/semanticTokens.ts#L58
+# - Rust Analyzer: https://github.com/rust-analyzer/rust-analyzer/blob/f6da603c7fe56c19a275dc7bab1f30fe1ad39707/crates/ide/src/syntax_highlighting.rs#L42
+# [[semantic_tokens]]
+# token = "comment"
+# face = "documentation"
+# modifiers = ["documentation"]
+
+# [[semantic_tokens]]
+# token = "comment"
+# face = "comment"
+
+# [[semantic_tokens]]
+# token = "function"
+# face = "function"
+
+# [[semantic_tokens]]
+# token = "keyword"
+# face = "keyword"
+
+# [[semantic_tokens]]
+# token = "namespace"
+# face = "module"
+
+# [[semantic_tokens]]
+# token = "operator"
+# face = "operator"
+
+# [[semantic_tokens]]
+# token = "string"
+# face = "string"
+
+# [[semantic_tokens]]
+# token = "type"
+# face = "type"
+
+# [[semantic_tokens]]
+# token = "variable"
+# face = "default+d"
+# modifiers = ["readonly"]
+
+# [[semantic_tokens]]
+# token = "variable"
+# face = "default+d"
+# modifiers = ["constant"]
+
+# [[semantic_tokens]]
+# token = "variable"
+# face = "variable"
