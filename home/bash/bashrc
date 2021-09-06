@@ -1,0 +1,53 @@
+function ranger {
+    if [ -n $KAKOUNE_SESSION ]; then
+        VISUAL='kcr edit'
+    fi
+
+    local IFS=$'\t\n'
+    local tempfile="$(mktemp -t tmp.XXXXXX)"
+    local ranger_cmd=(
+        command
+        ranger
+        --cmd="map Q chain shell echo %d > "$tempfile"; quitall"
+    )
+
+    if [[ -n $RANGER_LEVEL ]]; then
+        dump_before_exit
+    else
+        ${ranger_cmd[@]} "$@"
+        if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
+            cd -- "$(cat "$tempfile")" || return
+        fi
+        command rm -f -- "$tempfile" 2>/dev/null
+    fi
+}
+
+
+function dump_before_exit {
+    if [[ -n $RANGER_LEVEL ]]; then
+        echo "$PWD" >| "/tmp/picked"
+    fi
+    exit
+}
+
+bind '"\C-q":"dump_before_exit\C-m"'
+
+function ps1_gen {
+    local GREEN="\[$(tput setaf 2)\]\[$(tput bold)\]"
+    local CLEAR="\[$(tput sgr0)\]"
+    local p1="\n${GREEN}(\t) "
+    local p2="\w${CLEAR}\n"
+    local p3="${GREEN}\\$ ${CLEAR}"
+    local extra
+    if [ -n "$RANGER_LEVEL" -a "$IN_NIX_SHELL" ]; then
+        extra="[nix rng] "
+    elif [ -n "$RANGER_LEVEL" ]; then
+        extra="[rng] "
+    elif [ -n "$IN_NIX_SHELL" ]; then
+        extra="[nix] "
+    fi
+    PS1=${p1}${extra}${p2}${p3}
+}
+
+
+ps1_gen
