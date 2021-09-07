@@ -17,8 +17,8 @@ command = "haskell-language-server-wrapper"
 args = ["--lsp"]
 settings_section = "haskell"
 [language.haskell.settings.haskell]
-# See https://github.com/latex-lsp/texlab/blob/e1ee8495b0f54b4411a1ffacf787efa621d8f826/src/options.rs
 # formattingProvider = "ormolu"
+
 [language.nix]
 filetypes = ["nix"]
 roots = ["flake.nix", "shell.nix", ".git"]
@@ -26,13 +26,20 @@ command = "rnix-lsp"
 
 [language.python]
 filetypes = ["python"]
-roots = ["requirements.txt", "setup.py", ".git", ".hg"]
+roots = ["requirements.txt", "setup.py", ".git", ".hg", "pyproject.tml"]
 command = "pyls"
 offset_encoding = "utf-8"
 [language.python.settings]
 # See https://github.com/palantir/python-language-server#configuration
 # and https://github.com/palantir/python-language-server/blob/develop/vscode-client/package.json
 # "pyls.configurationSources" = ["flake8"]
+[language.python.settings.pyls]
+configurationSources = ["pycodestyle"]
+[language.python.settings.pyls.plugins.pylint]
+enabled = true
+[language.python.settings.pyls.plugins.pyls_mypy]
+enabled = true
+live_mode = false
 
 # Semantic tokens support
 # See https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_semanticTokens

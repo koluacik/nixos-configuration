@@ -29,8 +29,7 @@ hook global BufWritePre .* %{ try %{ execute-keys -draft \%s\h+$<ret>d } }
 # hello world
 
 # https://github.com/Delapouite/kakoune-registers/issues/3#issuecomment-739482262
-# info-registers switches buffers
-define-command info-registers -docstring 'populate an info box with the content of registers' %{
+define-command info-reg -docstring 'populate an info box with the content of registers' %{
     list-registers
     try %{ execute-keys '%<a-s>s^.{30}\K[^\n]*<ret>c…<esc>' }
     execute-keys '%'
@@ -39,7 +38,9 @@ define-command info-registers -docstring 'populate an info box with the content 
     info -title registers -- %opt{reg_info}
 }
 
-hook global BufSetOption filetype=(nix|haskell) %{
+hook global WinCreate .*\.rkt %{ set buffer filetype scheme }
+
+hook global BufSetOption filetype=(nix|haskell|scheme) %{
     set buffer indentwidth 2
 }
 
@@ -52,17 +53,18 @@ eval %sh{
 }
 
 # buffers
-map global user b ':info-buffers<ret>' -docstring 'buffer list'
-map global user B ':enter-user-mode buffers<ret>' -docstring 'buffer nav'
-map global user <a-B> ':enter-user-mode buffers<ret>' -docstring 'buffer nav (lock)'
+map global user b ':pick-buffers<ret>' -docstring 'pick buffers'
+map global user B ':enter-user-mode -lock pick-buffers<ret>' -docstring 'pick buffers (lock)'
+map global user <a-b> ':enter-user-mode buffers<ret>' -docstring 'buffer nav'
+map global user <a-B> ':enter-user-mode -lock buffers<ret>' -docstring 'buffer nav (lock)'
 
 # copy
 map global user c '<a-|>xsel -b<ret>' -docstring 'copy selection clipboard'
 
 # lsp
 eval %sh{kak-lsp --kakoune -s $kak_session}
-map global user l ':enter-user-mode lsp<ret>' -docstring 'lsp mode'
-hook global WinSetOption filetype=(haskell|nix|c|cpp) %{
+map global normal q ':enter-user-mode lsp<ret>' -docstring 'lsp mode'
+hook global WinSetOption filetype=(haskell|nix|c|cpp|python) %{
     lsp-enable-window
 }
 
@@ -93,6 +95,26 @@ map global user / ':comment-line<ret>' -docstring 'comment line'
 map global user ? ':comment-block<ret>' -docstring 'comment block'
 
 # ergonomics
-alias ns rename-session
-map global normal - "<a-i>"
-map global normal + "<a-a>"
+alias global ns rename-session
+map global normal -- - "<a-i>"
+map global normal -- + "<a-a>"
+
+# repl stuff
+define-command repl-echo -docstring "send the selected text to the repl window (alt)" %{
+    nop %sh{
+        CUR=`xdotool getactivewindow`
+        echo ${kak_selection} | xsel
+        xdotool search --name kak_repl_window windowfocus --sync key --clearmodifiers Shift+Insert
+        xdotool windowfocus $CUR
+    }
+}
+
+map global user r ':repl-echo<ret>' -docstring 'repl-echo'
+map global user R ':repl<ret>' -docstring ':repl'
+
+# rainbows!
+set global rainbow_colors 'rgb:000000' 'rgb:DC322F' 'rgb:b58900' 'rgb:859900' 'rgb:2aa198' 'rgb:268bd2' 'rgb:6c71c4' 'rgb:d33682'
+set global rainbow_mode 0 # only highlight matching pairs with rainbow fg.
+map global user -- ( ":rainbow-enable-window<ret>" -docstring "enable rainbow"
+map global user -- ) ":rainbow-disable-window<ret>" -docstring "disable rainbow"
+
