@@ -113,8 +113,9 @@ map global user r ':repl-echo<ret>' -docstring 'repl-echo'
 map global user R ':repl<ret>' -docstring ':repl'
 
 # rainbows!
-set global rainbow_colors 'rgb:000000' 'rgb:DC322F' 'rgb:b58900' 'rgb:859900' 'rgb:2aa198' 'rgb:268bd2' 'rgb:6c71c4' 'rgb:d33682'
-set global rainbow_mode 0 # only highlight matching pairs with rainbow fg.
-map global user -- ( ":rainbow-enable-window<ret>" -docstring "enable rainbow"
-map global user -- ) ":rainbow-disable-window<ret>" -docstring "disable rainbow"
-
+hook global KakBegin .* %{
+    set global rainbow_colors 'rgb:000000' 'rgb:DC322F' 'rgb:b58900' 'rgb:859900' 'rgb:2aa198' 'rgb:268bd2' 'rgb:6c71c4' 'rgb:d33682'
+    set global rainbow_mode 0 # only highlight matching pairs with rainbow fg.
+    map global user ( ":rainbow-enable-window<ret>" -docstring "enable rainbow"
+    map global user ) ":rainbow-disable-window<ret>" -docstring "disable rainbow"
+}
