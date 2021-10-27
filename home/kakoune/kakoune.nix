@@ -34,6 +34,7 @@
         };
 
       in [
+        texlab
         jq
         kakoune-cr
         (kakoune.override {

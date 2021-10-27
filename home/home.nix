@@ -41,7 +41,6 @@
 
     home.packages = with pkgs; [
 
-      # bar
       xmobar
 
       # browsers
@@ -102,6 +101,12 @@
       stack
       valgrind
       rnix-lsp
+
+      jetbrains.pycharm-professional
+      jetbrains.clion
+
+      xournalpp
+      texlive.combined.scheme-full
 
       # utilities etc.
       appimage-run

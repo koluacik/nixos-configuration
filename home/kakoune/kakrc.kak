@@ -38,7 +38,8 @@ define-command info-reg -docstring 'populate an info box with the content of reg
     info -title registers -- %opt{reg_info}
 }
 
-hook global WinCreate .*\.rkt %{ set buffer filetype scheme }
+hook global BufCreate .*\.rkt %{ set buffer filetype scheme }
+hook global BufCreate .*artisan %{ set buffer filetype php }
 
 hook global BufSetOption filetype=(nix|haskell|scheme) %{
     set buffer indentwidth 2
@@ -63,27 +64,15 @@ map global user c '<a-|>xsel -b<ret>' -docstring 'copy selection clipboard'
 
 # lsp
 eval %sh{kak-lsp --kakoune -s $kak_session}
+# set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
 map global normal q ':enter-user-mode lsp<ret>' -docstring 'lsp mode'
-hook global WinSetOption filetype=(haskell|nix|c|cpp|python) %{
+hook global WinSetOption filetype=(haskell|nix|c|cpp|python|latex) %{
     lsp-enable-window
 }
 
 # format
 map global user p ':format<ret>' -docstring 'format'
 
-# ide
-def ide %{
-    rename-client main
-    set global jumpclient main
-
-    new rename-client tools
-    set global toolsclient tools
-
-    new rename-client docs
-    set global docsclient docs
-
-    connect terminal
-}
 declare-user-mode switch
 map global user s ':enter-user-mode switch<ret>' -docstring 'switch mode'
 map global switch j ':focus %opt{jumpclient}<ret>' -docstring 'switch to jumpclient'
@@ -114,8 +103,63 @@ map global user R ':repl<ret>' -docstring ':repl'
 
 # rainbows!
 hook global KakBegin .* %{
-    set global rainbow_colors 'rgb:000000' 'rgb:DC322F' 'rgb:b58900' 'rgb:859900' 'rgb:2aa198' 'rgb:268bd2' 'rgb:6c71c4' 'rgb:d33682'
+    set global rainbow_colors 'rgb:DC322F' 'rgb:b58900' 'rgb:859900' 'rgb:2aa198' 'rgb:268bd2' 'rgb:6c71c4' 'rgb:d33682'
     set global rainbow_mode 0 # only highlight matching pairs with rainbow fg.
     map global user ( ":rainbow-enable-window<ret>" -docstring "enable rainbow"
     map global user ) ":rainbow-disable-window<ret>" -docstring "disable rainbow"
+}
+
+# matching pairs in insert mode
+# see: https://github.com/mawww/kakoune/issues/1192#issuecomment-422283119
+declare-option -hidden range-specs show_matching_range
+hook global -group kakrc-matching-ranges InsertChar '[[\](){}<>]' %{
+    eval -draft %{
+        try %{
+            exec '<esc>;hm<a-k>..<ret>;'
+            set window show_matching_range %val{timestamp} "%val{selection_desc}|MatchingChar"
+        } catch %{
+            set window show_matching_range 0
+        }
+        hook window -once InsertChar '[^[\](){}<>]' %{
+            set window show_matching_range 0
+        }
+        hook window -once ModeChange .* %{
+            set window show_matching_range 0
+        }
+        hook window -once InsertMove .* %{
+            set window show_matching_range 0
+        }
+    }
+}
+add-highlighter global/ ranges show_matching_range
+
+# clients
+set-option global jumpclient main
+set-option global toolsclient tools
+set-option global docsclient docs
+
+hook -once global ClientCreate client0 %{
+    rename-client main
+}
+
+def newtools %{
+    new rename-client tools
+}
+
+def newdocs %{
+    new rename-client docs
+}
+
+def fix-python %{
+    set-option global lsp_config %{
+        [language.python.settings.pylsp]
+        pylsp.plugins.pylsp_mypy.enabled = true
+        pylsp.plugins.pylsp_mypy.live_mode = true
+        pylsp.plugins.pylint.enabled = true
+        pylsp.plugins.flake8.enabled = false
+        pylsp.plugins.mccabe.enabled = false
+        pylsp.plugins.pycodestyle.enabled = false
+        pylsp.plugins.pyflakes.enabled = false
+        pylsp.plugins.yapf.enabled = false
+    }
 }
