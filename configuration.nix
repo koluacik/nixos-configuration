@@ -59,7 +59,7 @@ in
   networking.interfaces.wlo1.useDHCP = true;
 
   services.flatpak.enable = true;
-  services.sshd.enable = true;
+  services.sshd.enable = false;
 
   # Enable the GNOME 3 Desktop Environment.
   services.xserver.enable = true;
@@ -110,6 +110,22 @@ in
     ];
   };
 
+  # see: nixos.wiki/wiki/WireGuard
+  networking.firewall = {
+   # if packets are still dropped, they will show up in dmesg
+   logReversePathDrops = true;
+   # wireguard trips rpfilter up
+   extraCommands = ''
+     ip46tables -t raw -I nixos-fw-rpfilter -p udp -m udp --sport 3389 -j RETURN
+     ip46tables -t raw -I nixos-fw-rpfilter -p udp -m udp --dport 3389 -j RETURN
+   '';
+   extraStopCommands = ''
+     ip46tables -t raw -D nixos-fw-rpfilter -p udp -m udp --sport 3389 -j RETURN || true
+     ip46tables -t raw -D nixos-fw-rpfilter -p udp -m udp --dport 3389 -j RETURN || true
+   '';
+  };
+
+  virtualisation.docker.enable = true;
 
   system.stateVersion = "20.09"; # Did you read the comment?
 }
