@@ -40,7 +40,7 @@
         (kakoune.override {
           plugins = with kakounePlugins; [
             kak-ansi
-            kakconfig
+            # kakconfig
             kak-lsp
             kakoune-buffers
             kakoune-registers
@@ -50,5 +50,6 @@
         })
       ];
     home.file.".config/kak-lsp/kak-lsp.toml".source = ./kak-lsp.toml;
+    home.file.".config/kak/kakrc/".source= ./kakrc.kak;
   };
 }
