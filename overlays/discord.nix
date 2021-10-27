@@ -8,19 +8,19 @@ final: prev: {
     };
   });
   discord-ptb = prev.discord-ptb.overrideAttrs (oa: rec {
-    version = "0.0.25";
+    version = "0.0.26";
     src = prev.fetchurl {
       url =
         "https://dl-ptb.discordapp.net/apps/linux/${version}/discord-ptb-${version}.tar.gz";
-      sha256 = "082ygmsycicddpkv5s03vw3rjkrk4lgprq29z8b1hdjifvw93b21";
+      sha256 = "1rlj76yhxjwwfmdln3azjr69hvfx1bjqdg9jhdn4fp6mlirkrcq4";
     };
   });
   discord = prev.discord.overrideAttrs (oa: rec {
-    version = "0.0.15";
+    version = "0.0.16";
     src = prev.fetchurl {
       url =
         "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz";
-      sha256 = "0pn2qczim79hqk2limgh88fsn93sa8wvana74mpdk5n6x5afkvdd";
+      sha256 = "1s9qym58cjm8m8kg3zywvwai2i3adiq6sdayygk2zv72ry74ldai";
     };
   });
 }

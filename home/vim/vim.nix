@@ -2,10 +2,12 @@
 
 let
   myNeoSolarized = pkgs.vimUtils.buildVimPlugin {
+    pname = "myNeoSolarized";
     name = "myNeoSolarized";
     src = fetchGit ./NeoSolarized;
   };
   taboo = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "taboo";
     name = "taboo";
     src = pkgs.fetchgit {
       url = "https://github.com/gcmt/taboo.vim";
