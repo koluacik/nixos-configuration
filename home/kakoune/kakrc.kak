@@ -70,6 +70,10 @@ hook global WinSetOption filetype=(haskell|nix|c|cpp|python|latex) %{
     lsp-enable-window
 }
 
+hook global WinSetOption filetype=latex %{
+    add-highlighter buffer/wrapping wrap -indent -word -width 100
+}
+
 # format
 map global user p ':format<ret>' -docstring 'format'
 
@@ -142,6 +146,16 @@ hook -once global ClientCreate client0 %{
 
 def newtools %{
     new rename-client tools
+}
+
+def diagnostics-refresh -params 0 -docstring "switch lsp diagnostic refresh on buf write" %{
+    hook buffer -group diagnostics-refresh BufWritePost .* %{
+        lsp-diagnostics
+    }
+}
+
+def no-diagnostics-refresh -params 0 -docstring "disable lsp diagnost refresh" %{
+    remove-hooks buffer diagnostics-refresh
 }
 
 def newdocs %{

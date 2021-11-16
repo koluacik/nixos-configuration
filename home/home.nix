@@ -141,10 +141,13 @@
       scrot
       spectacle
       tabbed
+      tmux
       tree
       ueberzug # For ranger.
       unzip
       watch
+      wireshark
+      # wireshark-cli
       xclip
       xdotool
       xsel
