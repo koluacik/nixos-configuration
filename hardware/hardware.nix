@@ -51,6 +51,8 @@
 
   boot.supportedFilesystems = [ "ntfs" ];
 
+  hardware.xpadneo.enable = true;
+
   services.fstrim.enable = true;
 
   fileSystems."/mnt/backup" = {

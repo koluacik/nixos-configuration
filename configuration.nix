@@ -61,6 +61,13 @@ in
   services.flatpak.enable = true;
   services.sshd.enable = false;
 
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+    dataDir = "/home/koluacik/sync";
+    user = "koluacik";
+  };
+
   # Enable the GNOME 3 Desktop Environment.
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
@@ -126,6 +133,10 @@ in
   };
 
   virtualisation.docker.enable = true;
+
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  users.extraGroups.vboxusers.members = [ "koluacik" ];
 
   system.stateVersion = "20.09"; # Did you read the comment?
 }
