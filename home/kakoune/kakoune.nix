@@ -36,11 +36,14 @@
       in [
         texlab
         jq
+        ag
+        ripgrep
         kakoune-cr
         (kakoune.override {
           plugins = with kakounePlugins; [
-            kak-ansi
             # kakconfig
+            fzf-kak
+            kak-ansi
             kak-lsp
             kakoune-buffers
             kakoune-registers

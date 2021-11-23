@@ -21,6 +21,8 @@ hook global InsertCompletionShow .* %{
 addhl global/whitespace show-whitespaces -spc ' ' -lf ' '
 addhl global/trailing-whitespace regex '\h+$' 0:default,white
 
+map -docstring 'fzf mode' global normal '<c-p>' ': fzf-mode<ret>'
+
 # Indentation
 map global insert <tab> '<a-;><a-gt>'
 map global insert <s-tab> '<a-;><a-lt>'
@@ -175,3 +177,16 @@ def fix-python %{
         pylsp.plugins.yapf.enabled = false
     }
 }
+
+set-option global grepcmd "rg --column"
+
+set global modelinefmt '%val{bufname} %val{cursor_line}:%val{cursor_char_column}/%val{buf_line_count} {{context_info}} {{mode_info}} - %val{client}@[%val{session}]'
+
+hook global ModuleLoaded fzf-file %{
+    set-option global fzf_file_command "rg"
+}
+
+hook global ModuleLoaded fzf-grep %{
+    set-option global fzf_grep_command "rg --column"
+}
+

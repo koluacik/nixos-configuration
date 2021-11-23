@@ -109,6 +109,7 @@
       texlive.combined.scheme-full
 
       # utilities etc.
+      ag
       appimage-run
       arandr
       atool # For ranger archive previews.
@@ -138,6 +139,7 @@
       poppler_utils # For ranger pdf previews.
       qimgv
       ranger
+      ripgrep
       scrot
       spectacle
       tabbed
