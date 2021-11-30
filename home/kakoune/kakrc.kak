@@ -79,11 +79,11 @@ hook global WinSetOption filetype=latex %{
 # format
 map global user p ':format<ret>' -docstring 'format'
 
-declare-user-mode switch
-map global user s ':enter-user-mode switch<ret>' -docstring 'switch mode'
-map global switch j ':focus %opt{jumpclient}<ret>' -docstring 'switch to jumpclient'
-map global switch d ':focus %opt{docsclient}<ret>' -docstring 'switch to docsclient'
-map global switch t ':focus %opt{toolsclient}<ret>' -docstring 'switch to toolsclient'
+declare-user-mode switch-client
+map global user g ':enter-user-mode switch-client<ret>' -docstring 'switch-client mode'
+map global switch-client j ':focus %opt{jumpclient}<ret>' -docstring 'switch to jumpclient'
+map global switch-client d ':focus %opt{docsclient}<ret>' -docstring 'switch to docsclient'
+map global switch-client t ':focus %opt{toolsclient}<ret>' -docstring 'switch to toolsclient'
 
 # comment
 map global user / ':comment-line<ret>' -docstring 'comment line'
@@ -187,6 +187,13 @@ hook global ModuleLoaded fzf-file %{
 }
 
 hook global ModuleLoaded fzf-grep %{
-    set-option global fzf_grep_command "rg --column"
+    set-option global fzf_grep_command "rg"
 }
 
+# surround
+declare-user-mode surround
+map global surround s ':surround<ret>' -docstring 'surround'
+map global surround c ':change-surround<ret>' -docstring 'change'
+map global surround d ':delete-surround<ret>' -docstring 'delete'
+map global surround t ':select-surrounding-tag<ret>' -docstring 'select tag'
+map global user s ':enter-user-mode surround<ret>'
