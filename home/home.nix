@@ -130,9 +130,9 @@
       kitty
       libnotify
       lxappearance
+      nixfmt
       nix-index
       nix-prefetch-github
-      nixfmt
       obs-studio
       pavucontrol
       playerctl
@@ -149,11 +149,11 @@
       unzip
       watch
       wireshark
-      # wireshark-cli
       xclip
       xdotool
-      xsel
       xf86_input_wacom
+      xsel
+
     ];
   };
 }
