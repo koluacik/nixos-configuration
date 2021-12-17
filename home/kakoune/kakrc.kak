@@ -70,6 +70,16 @@ eval %sh{kak-lsp --kakoune -s $kak_session}
 map global normal q ':enter-user-mode lsp<ret>' -docstring 'lsp mode'
 hook global WinSetOption filetype=(haskell|nix|c|cpp|python|latex) %{
     lsp-enable-window
+    set-option global lsp_config %{
+        [language.python.settings._]
+        pylsp.plugins.pylint.enabled = true
+        pylsp.plugins.pydocstyle.enabled = true
+        pylsp.plugins.flake8.enabled = false
+        pylsp.plugins.mccabe.enabled = false
+        pylsp.plugins.pycodestyle.enabled = false
+        pylsp.plugins.pyflakes.enabled = false
+        pylsp.plugins.yapf.enabled = false
+    }
 }
 
 hook global WinSetOption filetype=latex %{
@@ -162,20 +172,6 @@ def no-diagnostics-refresh -params 0 -docstring "disable lsp diagnost refresh" %
 
 def newdocs %{
     new rename-client docs
-}
-
-def fix-python %{
-    set-option global lsp_config %{
-        [language.python.settings.pylsp]
-        pylsp.plugins.pylsp_mypy.enabled = true
-        pylsp.plugins.pylsp_mypy.live_mode = true
-        pylsp.plugins.pylint.enabled = true
-        pylsp.plugins.flake8.enabled = false
-        pylsp.plugins.mccabe.enabled = false
-        pylsp.plugins.pycodestyle.enabled = false
-        pylsp.plugins.pyflakes.enabled = false
-        pylsp.plugins.yapf.enabled = false
-    }
 }
 
 set-option global grepcmd "rg --column"

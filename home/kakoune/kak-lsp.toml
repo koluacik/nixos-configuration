@@ -19,11 +19,6 @@ settings_section = "haskell"
 [language.haskell.settings.haskell]
 # formattingProvider = "ormolu"
 
-[language.nix]
-filetypes = ["nix"]
-roots = ["flake.nix", "shell.nix", ".git"]
-command = "rnix-lsp"
-
 [language.latex]
 filetypes = ["latex"]
 roots = [".git", ".hg"]
@@ -33,18 +28,64 @@ settings_section = "texlab"
 # See https://github.com/latex-lsp/texlab/blob/master/src/options.rs
 # bibtexFormatter = "texlab"
 
+[language.nix]
+filetypes = ["nix"]
+roots = ["flake.nix", "shell.nix", ".git", ".hg"]
+command = "rnix-lsp"
+
 [language.python]
 filetypes = ["python"]
-roots = ["requirements.txt", "setup.py", ".git", ".hg", "pyproject.tml", "manage.py"]
+roots = ["pyproject.toml", "requirements.txt", "setup.py", ".git", ".hg"]
 command = "pylsp"
+args = [ "-v" ]
+settings_section = "_"
 offset_encoding = "utf-8"
-settings_section = "pylsp"
-[language.python.settings.pylsp]
-pylsp.plugins.pylsp_mypy.enabled = true
-pylsp.plugins.pylsp_mypy.live_mode = true
-pylsp.plugins.pylint.enabled = true
-pylsp.plugins.flake8.enabled = false
-pylsp.plugins.mccabe.enabled = false
-pylsp.plugins.pycodestyle.enabled = false
-pylsp.plugins.pyflakes.enabled = false
-pylsp.plugins.yapf.enabled = false
+workaround_server_sends_plaintext_labeled_as_markdown = true
+[language.python.settings._]
+
+[[semantic_tokens]]
+token = "comment"
+face = "documentation"
+modifiers = ["documentation"]
+
+[[semantic_tokens]]
+token = "comment"
+face = "comment"
+
+[[semantic_tokens]]
+token = "function"
+face = "function"
+
+[[semantic_tokens]]
+token = "keyword"
+face = "keyword"
+
+[[semantic_tokens]]
+token = "namespace"
+face = "module"
+
+[[semantic_tokens]]
+token = "operator"
+face = "operator"
+
+[[semantic_tokens]]
+token = "string"
+face = "string"
+
+[[semantic_tokens]]
+token = "type"
+face = "type"
+
+[[semantic_tokens]]
+token = "variable"
+face = "default+d"
+modifiers = ["readonly"]
+
+[[semantic_tokens]]
+token = "variable"
+face = "default+d"
+modifiers = ["constant"]
+
+[[semantic_tokens]]
+token = "variable"
+face = "variable"
