@@ -57,7 +57,7 @@ wantedKeys =
     ((modMask myXConfig .|. shiftMask, xK_space), sendMessage (Toggle NBFULL)),
     ((modMask myXConfig, xK_n), sendMessage (Toggle MIRROR)),
     ((modMask myXConfig, xK_b), sendMessage (Toggle REFLECTX)),
-    ((modMask myXConfig .|. controlMask, xK_Return), scratchpadSpawnActionCustom "HISTFILE='/home/koluacik/.bash_history_scratchpad' alacritty --class scratchpad")
+    ((modMask myXConfig .|. controlMask, xK_Return), scratchpadSpawnActionCustom "HISTFILE='/home/koluacik/.bash_history_scratchpad' tabbed -fdkn scratchpad alacritty --embed")
   ]
 
 mediaKeys :: [(String, X ())]

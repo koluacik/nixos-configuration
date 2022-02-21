@@ -12,7 +12,7 @@ offset_encoding = "utf-8"
 
 [language.haskell]
 filetypes = ["haskell"]
-roots = ["Setup.hs", "stack.yaml", "*.cabal"]
+roots = [ "*.nix", "Setup.hs", "stack.yaml", "*.cabal" ]
 command = "haskell-language-server-wrapper"
 args = ["--lsp"]
 settings_section = "haskell"
@@ -32,6 +32,15 @@ settings_section = "texlab"
 filetypes = ["nix"]
 roots = ["flake.nix", "shell.nix", ".git", ".hg"]
 command = "rnix-lsp"
+
+[language.go]
+filetypes = ["go"]
+roots = ["Gopkg.toml", "go.mod", ".git", ".hg"]
+command = "gopls"
+settings_section = "gopls"
+[language.go.settings.gopls]
+# See https://github.com/golang/tools/blob/master/gopls/doc/settings.md
+# # "build.buildFlags" = []
 
 [language.python]
 filetypes = ["python"]

@@ -74,8 +74,9 @@ in {
   services.xserver.windowManager.xmonad.enable = true;
 
   services.xserver.layout = "us,tr";
+  # Pause = fn+r_shift on pavilion 15, fn+\ (\ in us , in tr) on vortex pok3r.
   services.xserver.xkbOptions =
-    "altwin:swap_lalt_lwin,shift:both_capslock,grp:ctrls_toggle";
+    "altwin:swap_lalt_lwin,grp:shifts_toggle,compose:paus";
 
   environment.variables = {
     EDITOR = "kak";

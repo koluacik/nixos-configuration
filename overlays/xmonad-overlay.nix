@@ -21,9 +21,11 @@ in {
   haskellPackages = prev.haskellPackages.override (old: {
     overrides = prev.lib.composeExtensions (old.overrides or (_: _: { }))
       (hfinal: hprev: rec {
-        xmonad = hfinal.callCabal2nix "xmonad" xmonadGH { };
-        xmonad-contrib =
-          hfinal.callCabal2nix "xmonad-contrib" xmonad-contribGH { };
+        # xmonad = hfinal.callCabal2nix "xmonad" xmonadGH { };
+        # xmonad-contrib =
+        #   hfinal.callCabal2nix "xmonad-contrib" xmonad-contribGH { };
+        xmonad = hfinal.xmonad_0_17_0;
+        xmonad-contrib = hfinal.xmonad-contrib_0_17_0;
       });
   });
 }

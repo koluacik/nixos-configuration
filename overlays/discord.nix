@@ -16,11 +16,11 @@ final: prev: {
     };
   });
   discord = prev.discord.overrideAttrs (oa: rec {
-    version = "0.0.16";
+    version = "0.0.17";
     src = prev.fetchurl {
       url =
         "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz";
-      sha256 = "1s9qym58cjm8m8kg3zywvwai2i3adiq6sdayygk2zv72ry74ldai";
+      sha256 = "058k0cmbm4y572jqw83bayb2zzl2fw2aaz0zj1gvg6sxblp76qil";
     };
   });
 }
