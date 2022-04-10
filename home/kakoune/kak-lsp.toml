@@ -17,7 +17,7 @@ command = "haskell-language-server-wrapper"
 args = ["--lsp"]
 settings_section = "haskell"
 [language.haskell.settings.haskell]
-# formattingProvider = "ormolu"
+formattingProvider = "stylish-haskell"
 
 [language.latex]
 filetypes = ["latex"]

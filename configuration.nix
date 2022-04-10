@@ -25,13 +25,13 @@ in {
   nixpkgs.config.chromium.enableWideVine = true;
 
   nixpkgs.overlays = [
-    (import ./overlays/xmonad-overlay.nix)
+    # (import ./overlays/xmonad-overlay.nix)
     (import ./overlays/man-pages-posix.nix)
     (import ./overlays/tabbed-overlay.nix)
-    (import ./overlays/discord.nix)
+    # (import ./overlays/discord.nix)
     (import ./overlays/krita.nix)
-    (import ./overlays/fstar-bin.nix)
-    (import ./overlays/countdown.nix)
+    # (import ./overlays/fstar-bin.nix)
+    # (import ./overlays/countdown.nix)
     (import ./overlays/kakoune-cr.nix)
   ];
 
@@ -57,7 +57,7 @@ in {
   # networking.interfaces.eno1.useDHCP = true;
   # networking.interfaces.wlo1.useDHCP = true;
 
-  services.flatpak.enable = true;
+  # services.flatpak.enable = true;
   services.sshd.enable = false;
 
   services.syncthing = {
@@ -90,7 +90,7 @@ in {
 
   programs.steam.enable = true;
 
-  programs.wireshark.enable = true;
+  # programs.wireshark.enable = false;
 
   programs.ssh.startAgent = true;
 
@@ -113,6 +113,7 @@ in {
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
+    wireplumber.enable = false;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
@@ -184,8 +185,8 @@ in {
 
   virtualisation.docker.enable = true;
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
+  # virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enableExtensionPack = true;
   users.extraGroups.vboxusers.members = [ "koluacik" ];
 
   system.stateVersion = "20.09"; # Did you read the comment?

@@ -1,8 +1,12 @@
+{-# LANGUAGE ScopedTypeVariables #-}
+
 import XMonad
-import XMonad.Hooks.DynamicBars (dynStatusBarStartup, multiPP)
+-- import XMonad.Hooks.DynamicBars (dynStatusBarStartup, multiPP)
 import XMonad.Hooks.DynamicLog (filterOutWsPP, xmobarPP)
 import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen)
 import XMonad.Hooks.ManageDocks (ToggleStruts (ToggleStruts), avoidStruts, docks)
+import XMonad.Hooks.StatusBar
+import XMonad.Hooks.StatusBar.PP
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.NoBorders
@@ -23,13 +27,14 @@ main =
 
 myXConfig =
   docks
+    . dynamicSBs (pure . sbOfScreen)
     . ewmhFullscreen
     . ewmh
     $ def
       { terminal = "alacritty",
-        startupHook = myStartupHook,
+        -- startupHook = myStartupHook,
         layoutHook = myLayoutHook,
-        logHook = myBarsPP,
+        -- logHook = myBarsPP,
         manageHook = scratchpadManageHook (RationalRect (679 / 1920) (359 / 1080) (562 / 1920) (362 / 1080)),
         modMask = mod4Mask
       }
@@ -37,17 +42,29 @@ myXConfig =
       `additionalKeys` wantedKeys
       `additionalKeysP` mediaKeys
 
-myStartupHook :: X ()
-myStartupHook = dynStatusBarStartup startBar killBars
-  where
-    startBar (S id') = spawnPipe $ "xmobar -x " ++ show id'
-    killBars = return ()
+pp :: PP
+pp = filterOutWsPP [scratchpadWorkspaceTag] xmobarPP
 
-myBarsPP :: X ()
-myBarsPP = multiPP focusedPP unfocusedPP
-  where
-    focusedPP = filterOutWsPP [scratchpadWorkspaceTag] xmobarPP
-    unfocusedPP = focusedPP
+sbOfScreen :: ScreenId -> StatusBarConfig
+sbOfScreen (S sid) =
+  if sid < 2
+  then statusBarPropTo
+        ("_XMONAD_LOG_" <> show sid)
+        ("xmobar -x " <> show sid <> " $HOME/.config/xmobar/xmobarrc_" <> show sid)
+        (pure $ filterOutWsPP [scratchpadWorkspaceTag] xmobarPP)
+  else mempty
+
+-- myStartupHook :: X ()
+-- myStartupHook = dynStatusBarStartup startBar killBars
+--   where
+--     startBar (S id') = spawnPipe $ "xmobar -x " ++ show id'
+--     killBars = return ()
+
+-- myBarsPP :: X ()
+-- myBarsPP = multiPP focusedPP unfocusedPP
+--   where
+--     focusedPP = filterOutWsPP [scratchpadWorkspaceTag] xmobarPP
+--     unfocusedPP = focusedPP
 
 unwantedKeys :: [(KeyMask, KeySym)]
 unwantedKeys = [(modMask myXConfig, xK_space), (modMask myXConfig, xK_n)]

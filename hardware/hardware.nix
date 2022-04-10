@@ -39,8 +39,15 @@
     nvidiaBusId = "PCI:1:0:0";
   };
 
+  services.xserver.screenSection = ''
+    Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
+    Option         "AllowIndirectGLXProtocol" "off"
+    Option         "TripleBuffer" "on"
+  '';
+  hardware.nvidia.powerManagement.enable = true;
+
   # No tear
-  programs.bash.loginShellInit = "/etc/nixos/hardware/force-pipeline.sh";
+  # programs.bash.loginShellInit = "/etc/nixos/hardware/force-pipeline.sh";
 
   hardware.opengl.enable = true;
   hardware.opengl.driSupport32Bit = true;

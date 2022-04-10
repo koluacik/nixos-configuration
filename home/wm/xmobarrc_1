@@ -1,0 +1,16 @@
+Config { position = TopW L 100
+       , sepChar = "%"
+       , alignSep = "\/"
+       , template = "%_XMONAD_LOG_1% \%locks% %kbd% / %battery% | %date% "
+       , commands = [ Run Date "%a %b %_d %l:%M" "date" 10
+                    , Run XPropertyLog "_XMONAD_LOG_1"
+                    , Run Kbd [("us","US"),("tr","TR")]
+                    , Run Locks
+                    , Run Battery
+                        ["-t", "<acstatus>"
+                        , "--", "-O", "+ <left>", "-o", "<left>"
+                        , "-i", "", "-P"
+                        , "-A", "5"
+                        ] 1
+                    ]
+       }

@@ -36,7 +36,6 @@
       in [
         texlab
         jq
-        ag
         ripgrep
         kakoune-cr
         (kakoune.override {

@@ -14,18 +14,28 @@
       ./gpg.nix
       ./kakoune/kakoune.nix
       ./private/home-private.nix
-      ./vim/vim.nix
+      # ./vim/vim.nix
       ./wm/xmonad.nix
       ./xdg.nix
     ];
 
     systemd.user.sessionVariables = {
-      # SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
       WINIT_X11_SCALE_FACTOR = "1";
     };
 
-    programs.direnv.enable = true;
+    programs.direnv.enable = false;
     programs.direnv.nix-direnv.enable = true;
+
+    programs.vscode = {
+      enable = false;
+      extensions = with pkgs.vscode-extensions; [
+        eamodio.gitlens
+        yzhang.markdown-all-in-one
+        haskell.haskell
+        arrterian.nix-env-selector
+        justusadam.language-haskell
+      ];
+    };
 
     services.dunst = {
       enable = true;
@@ -41,14 +51,11 @@
 
     home.packages = with pkgs; [
 
-      xmobar
-
       # browsers
       chromium
       qutebrowser
 
       # communication
-      signal-desktop
       slack
       tdesktop
       zoom-us
@@ -59,16 +66,11 @@
 
       # fun!
       discord
-      discord-canary
-      discord-ptb
       mpv
-      neofetch
-      protontricks
+      # neofetch
       qbittorrent
       spotify
-      tor-browser-bundle-bin
       wineWowPackages.stable
-      youtube-dl
 
       # mail
       thunderbird
@@ -84,63 +86,57 @@
       zathura
 
       # programming
-      cabal2nix
-      # clang_11
-      clang-tools
-      gcc
-      gdb
-      ghc
-      gnumake
-      haskell-language-server
-      adoptopenjdk-jre-openj9-bin-15 # for uppaal
-      manpages
+      # cabal2nix
+      # clang-tools
+      # gcc
+      # gdb
+      # gnumake
+      # adoptopenjdk-jre-openj9-bin-15 # for uppaal
+      jdk # 17
+      man-pages
       man-pages-posix
       patchelf
       poetry
-      racket
-      stack
-      valgrind
+      # valgrind
       rnix-lsp
 
       jetbrains.pycharm-professional
       jetbrains.clion
+      jetbrains.idea-ultimate
 
       xournalpp
-      texlive.combined.scheme-full
+      # texlive.combined.scheme-full
 
       # utilities etc.
-      ag
       appimage-run
       arandr
       atool # For ranger archive previews.
       autorandr
       brightnessctl
-      countdown
+      # countdown
       dmenu
       dragon-drop # For drag and drop files.
-      # dunst
       fd
       ffmpeg
       ffmpegthumbnailer
       file
       git
-      gnupg
+      # gnupg
       htop
       killall
-      kitty
       libnotify
       lxappearance
       nixfmt
       nix-index
       nix-prefetch-github
-      obs-studio
+      # obs-studio
       pavucontrol
       playerctl
       poppler_utils # For ranger pdf previews.
-      qimgv
+      # qimgv
       ranger
       ripgrep
-      scrot
+      # scrot
       spectacle
       tabbed
       tmux
@@ -148,11 +144,18 @@
       ueberzug # For ranger.
       unzip
       watch
-      wireshark
       xclip
       xdotool
       xf86_input_wacom
       xsel
+
+      xorg.xwininfo
+      networkmanagerapplet
+      whois
+      lsof
+      feh
+
+      dunst
 
     ];
   };
