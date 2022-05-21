@@ -79,7 +79,7 @@
       keepassxc
 
       # octave
-      (octaveFull.withPackages (ps: with ps; [ statistics symbolic ]))
+      # (octaveFull.withPackages (ps: with ps; [ statistics ]))
 
       # office & pdf
       libreoffice
@@ -115,7 +115,8 @@
       brightnessctl
       # countdown
       dmenu
-      dragon-drop # For drag and drop files.
+      # dragon-drop # removed in favor of xdragon in nixos-unstable
+      xdragon
       fd
       ffmpeg
       ffmpegthumbnailer
@@ -156,6 +157,10 @@
       feh
 
       dunst
+      postgresql
+      gcc
+
+      mkvtoolnix
 
     ];
   };
