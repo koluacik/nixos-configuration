@@ -117,11 +117,11 @@ define-command repl-echo -docstring "send the selected text to the repl window (
 map global user r ':repl-echo<ret>' -docstring 'repl-echo'
 map global user R ':repl<ret>' -docstring ':repl'
 
-# rainbows!
-set global rainbow_colors 'rgb:DC322F' 'rgb:b58900' 'rgb:859900' 'rgb:2aa198' 'rgb:268bd2' 'rgb:6c71c4' 'rgb:d33682'
-set global rainbow_mode 0 # only highlight matching pairs with rainbow fg.
-map global user ( ":rainbow-enable-window<ret>" -docstring "enable rainbow"
-map global user ) ":rainbow-disable-window<ret>" -docstring "disable rainbow"
+# # rainbows!
+# set global rainbow_colors 'rgb:DC322F' 'rgb:b58900' 'rgb:859900' 'rgb:2aa198' 'rgb:268bd2' 'rgb:6c71c4' 'rgb:d33682'
+# set global rainbow_mode 0 # only highlight matching pairs with rainbow fg.
+# map global user ( ":rainbow-enable-window<ret>" -docstring "enable rainbow"
+# map global user ) ":rainbow-disable-window<ret>" -docstring "disable rainbow"
 
 # matching pairs in insert mode
 # see: https://github.com/mawww/kakoune/issues/1192#issuecomment-422283119
