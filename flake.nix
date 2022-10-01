@@ -35,8 +35,8 @@
 
       legacyPackages.${system} = pkgs;
 
-      # devShells.${system} = {
-      #   xmonad = (import ./xmonad/shell.nix);
-      # };
+      devShells.${system} = {
+        xmonad = import ./xmonad/shell.nix {inherit pkgs;};
+      };
     };
 }

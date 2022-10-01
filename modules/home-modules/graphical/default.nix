@@ -6,6 +6,7 @@
     ./bat.nix
     ./fzf.nix
     ./ranger.nix
+    ./vscode.nix
   ];
 }
 

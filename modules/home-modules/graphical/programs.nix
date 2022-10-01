@@ -62,6 +62,7 @@ let programs = {
     spectacle
     ranger
     graphviz
+    solaar
   ];
 
   latex = [
