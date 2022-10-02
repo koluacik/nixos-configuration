@@ -1,2 +1,10 @@
 hardware-configuration.nix
 home/private/
+result
+*.qcow2
+**/.direnv/
+**/dist-newstyle/
+*.o
+*.hi
+.vscode
+xmonad/my-xmonad

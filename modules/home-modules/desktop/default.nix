@@ -13,6 +13,10 @@ with lib;
 
   config = mkIf config.myHome.desktop.enable {
     home.packages = with pkgs; [ xmobar dmenu ];
+    home.file = {
+      "xmobar/xmobarrc_0".source = ../../../xmonad/xmobarrc_0;
+      "xmobar/xmobarrc_1".source = ../../../xmonad/xmobarrc_1;
+    };
   };
 }
 

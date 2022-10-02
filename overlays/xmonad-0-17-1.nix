@@ -22,6 +22,7 @@ in
       (hfinal: hprev: rec {
         xmonad = hfinal.callCabal2nix "xmonad" xmonadGH { };
         xmonad-contrib = hfinal.callCabal2nix "xmonad-contrib" xmonad-contribGH { };
+        my-xmonad = hfinal.callCabal2nix "my-xmonad" ../xmonad { };
       });
   });
 }

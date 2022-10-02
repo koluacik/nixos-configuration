@@ -1,0 +1,72 @@
+cabal-version: 3.4
+name:          my-xmonad
+version:       0.1.0.0
+author:        Deniz Koluaçık
+maintainer:    koluacik@disroot.org
+build-type:    Simple
+
+common warnings
+  ghc-options:
+    -Wall -Wcompat -Wincomplete-record-updates
+    -Wincomplete-uni-patterns -Wredundant-constraints
+
+common extensions
+  default-extensions:
+    ApplicativeDo
+    DefaultSignatures
+    DeriveFoldable
+    DeriveFunctor
+    DeriveGeneric
+    DeriveTraversable
+    DerivingStrategies
+    EmptyCase
+    ExistentialQuantification
+    GeneralizedNewtypeDeriving
+    LambdaCase
+    MultiWayIf
+    NamedFieldPuns
+    OverloadedStrings
+    RankNTypes
+    ScopedTypeVariables
+    StandaloneDeriving
+    TypeApplications
+    TupleSections
+
+library
+  import:           warnings, extensions
+  exposed-modules:  MyXmonad
+  other-modules:
+    BaseConfig
+    Keys
+    Layout
+    Scratchpad
+    WindowBringer
+    StatusBar
+
+  build-depends:
+    , base            ^>=4.15.1.0
+    , xmonad          ^>=0.17.1
+    , xmonad-contrib  ^>=0.17.1
+
+  hs-source-dirs:   src
+  default-language: Haskell2010
+
+executable my-xmonad
+  import:           warnings, extensions
+  main-is:          Main.hs
+  build-depends:
+    , base       ^>=4.15.1.0
+    , my-xmonad
+
+  hs-source-dirs:   app
+  default-language: Haskell2010
+
+test-suite my-xmonad-test
+  import:           warnings, extensions
+  default-language: Haskell2010
+  type:             exitcode-stdio-1.0
+  hs-source-dirs:   test
+  main-is:          Main.hs
+  build-depends:
+    , base       ^>=4.15.1.0
+    , my-xmonad
