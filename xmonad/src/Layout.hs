@@ -8,6 +8,8 @@ import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Reflect
+import XMonad.Layout.DraggingVisualizer
+import XMonad.Layout.Renamed
 
 toggleFull, toggleNoBorderFull, toggleMirror, toggleReflectX :: X ()
 toggleFull = sendMessage (Toggle FULL)
@@ -19,6 +21,8 @@ addLayoutHook config = config {layoutHook = myLayoutHook}
 
 myLayoutHook =
   smartBorders
+    . renamed [CutWordsLeft 1] -- Remove DraggingVisualizer from the layout description
+    . draggingVisualizer
     . mkToggle1 NBFULL
     . avoidStruts
     . mkToggle (MIRROR ?? FULL ?? EOT)

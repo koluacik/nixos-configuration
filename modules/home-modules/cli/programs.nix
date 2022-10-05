@@ -7,7 +7,7 @@ let programs = {
     man-pages
     man-pages-posix
     patchelf
-    poetry
+    # poetry
     valgrind
     gcc
     postgresql
@@ -17,7 +17,7 @@ let programs = {
     nixfmt
     nix-index
     nix-prefetch-github
-    fd
+    # fd
   ];
 
   utils = [

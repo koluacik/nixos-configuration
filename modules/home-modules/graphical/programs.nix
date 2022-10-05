@@ -63,6 +63,7 @@ let programs = {
     ranger
     graphviz
     solaar
+    pulseaudio # for pactl
   ];
 
   latex = [
