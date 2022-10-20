@@ -29,6 +29,7 @@ let programs = {
     killall
     htop
     file
+    fd
   ];
 
 };

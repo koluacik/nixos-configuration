@@ -6,6 +6,7 @@ with lib;
     ./xmonad.nix
     ./fonts.nix
     ./keyboard.nix
+    ./lock.nix
   ];
 
   options.mySystem.desktop.enable = mkOption {

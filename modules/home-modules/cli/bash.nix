@@ -9,7 +9,7 @@
   config = mkIf config.myHome.bash.enable {
     programs.bash = {
       enable = true;
-      shellAliases = { today = "date +%F"; };
+      shellAliases.today = "date +%F";
       historyControl = [ "erasedups" "ignorespace" ];
       bashrcExtra = builtins.readFile ../../../home/bash/bashrc;
     };

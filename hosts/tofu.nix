@@ -13,4 +13,7 @@
     home-manager.nixosModules.home-manager
     ./../users/koluacik.nix
   ];
+
+  mySystem.xautolock.enable = false;
+
 }
