@@ -8,10 +8,12 @@ import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen)
 import XMonad.Hooks.ManageDocks (docks)
 import Layout (addLayoutHook)
 import Scratchpad (addScratchpads)
+import Reparenter (debugHandleEvent)
 
 main :: IO ()
 main =
   xmonad
+    . debugHandleEvent
     . docks
     . addStatusBar
     . ewmhFullscreen

@@ -2,6 +2,7 @@ module Scratchpad (scratchpadTerminal, addScratchpads) where
 
 import XMonad
 import XMonad.Util.NamedScratchpad
+import XMonad.StackSet
 
 scratchpadTerminal :: X ()
 scratchpadTerminal = namedScratchpadAction scratchpads (show ScratchpadTerminal)
@@ -18,5 +19,5 @@ scratchpads =
       (show ScratchpadTerminal)
       ("HISTFILE=\"$HOME/.bash_history_scratchpad\" tabbed -fdkn " <> show ScratchpadTerminal <> " alacritty --embed")
       (appName =? show ScratchpadTerminal)
-      defaultFloating
+      (customFloating (RationalRect (1/3) (1/3) (1/3) (1/3)))
   ]

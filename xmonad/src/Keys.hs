@@ -7,12 +7,14 @@ import WindowBringer (windowBringer)
 import XMonad
 import XMonad.Actions.TiledWindowDragging
 import XMonad.Util.EZConfig
+import Reparenter (query, reparentDrag, createTabber, dmenuReparent)
 
 modifyKeys :: XConfig l -> XConfig l
 modifyKeys config =
   config
     `removeKeys` unwantedKeys
     `additionalKeys` wantedKeys
+    -- `additionalKeys` subLayoutKeys
     `additionalKeysP` mediaKeys
     `additionalMouseBindings` wantedMouseBindings
 
@@ -24,12 +26,16 @@ wantedKeys =
     ((modMask baseConfig, xK_n), toggleMirror),
     ((modMask baseConfig, xK_b), toggleReflectX),
     ((modMask baseConfig .|. controlMask, xK_backslash), windowBringer),
-    ((modMask baseConfig .|. controlMask, xK_Return), scratchpadTerminal)
+    ((modMask baseConfig .|. controlMask, xK_Return), scratchpadTerminal),
+    ((modMask baseConfig .|. controlMask, xK_comma), createTabber >> trace "foo"),
+    -- ((modMask baseConfig .|. controlMask, xK_comma), debugStackFullString >>= dumpToFile),
+    ((modMask baseConfig .|. controlMask, xK_period), dmenuReparent)
   ]
 
 wantedMouseBindings :: [((ButtonMask, Button), Window -> X ())]
 wantedMouseBindings =
-  [ ((modMask baseConfig .|. shiftMask, button1), dragWindow)
+  [ ((modMask baseConfig .|. shiftMask, button1), dragWindow),
+    ((modMask baseConfig .|. controlMask, button1), reparentDrag)
   ]
 
 mediaKeys :: [(String, X ())]
@@ -48,4 +54,7 @@ unwantedKeys =
   [ (modMask baseConfig, xK_space),
     (modMask baseConfig, xK_n),
     (modMask baseConfig, xK_q)
+    -- (modMask baseConfig, xK_j),
+    -- (modMask baseConfig, xK_k),
+    -- (modMask baseConfig, xK_m)
   ]

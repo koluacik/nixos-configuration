@@ -42,6 +42,7 @@ library
     Scratchpad
     WindowBringer
     StatusBar
+    Reparenter
 
   build-depends:
     , base            ^>=4.15.1.0

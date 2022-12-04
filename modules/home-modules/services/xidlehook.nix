@@ -64,7 +64,7 @@ with lib;
       };
       Service = {
         Type = "simple";
-        ExecStart = trace "${script}" "${script}";
+        ExecStart = "${script}";
       };
       Install.WantedBy = [ "graphical-session.target" ];
     };
