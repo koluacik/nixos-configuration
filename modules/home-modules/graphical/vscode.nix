@@ -12,6 +12,8 @@
         jnoortheen.nix-ide
         justusadam.language-haskell
         mkhl.direnv
+        github.github-vscode-theme
+        ms-vscode.cpptools
       ];
     };
   };

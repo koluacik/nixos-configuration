@@ -30,6 +30,7 @@ let programs = {
     htop
     file
     fd
+    gh
   ];
 
 };

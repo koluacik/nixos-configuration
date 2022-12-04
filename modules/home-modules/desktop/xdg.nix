@@ -19,5 +19,6 @@
     "image/png" = [ "org.qutebrowser.qutebrowser.desktop" ];
     "inode/directory" = [ "ranger.desktop" ];
   };
+  xdg.dataFile."applications/org.qutebrowser.qutebrowser.desktop".source = "${pkgs.qutebrowser}/share/applications/org.qutebrowser.qutebrowser.desktop";
 }
 

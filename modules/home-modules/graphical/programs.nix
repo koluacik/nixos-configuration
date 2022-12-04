@@ -24,7 +24,7 @@ let programs = {
   media = [
     mpv
     spotify
-    libreoffice
+    libreoffice-fresh
     zathura
     qbittorrent
   ];
