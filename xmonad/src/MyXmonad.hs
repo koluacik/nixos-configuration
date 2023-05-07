@@ -13,7 +13,7 @@ import Reparenter (debugHandleEvent)
 main :: IO ()
 main =
   xmonad
-    . debugHandleEvent
+    -- . debugHandleEvent
     . docks
     . addStatusBar
     . ewmhFullscreen

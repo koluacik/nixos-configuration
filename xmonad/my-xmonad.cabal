@@ -29,8 +29,8 @@ common extensions
     RankNTypes
     ScopedTypeVariables
     StandaloneDeriving
-    TypeApplications
     TupleSections
+    TypeApplications
 
 library
   import:           warnings, extensions
@@ -39,13 +39,13 @@ library
     BaseConfig
     Keys
     Layout
-    Scratchpad
-    WindowBringer
-    StatusBar
     Reparenter
+    Scratchpad
+    StatusBar
+    WindowBringer
 
   build-depends:
-    , base            ^>=4.15.1.0
+    , base            >=4.16.4  && <4.17
     , xmonad          ^>=0.17.1
     , xmonad-contrib  ^>=0.17.1
 
@@ -56,7 +56,7 @@ executable my-xmonad
   import:           warnings, extensions
   main-is:          Main.hs
   build-depends:
-    , base       ^>=4.15.1.0
+    , base       >=4.16.4 && <4.17
     , my-xmonad
 
   hs-source-dirs:   app
@@ -69,5 +69,5 @@ test-suite my-xmonad-test
   hs-source-dirs:   test
   main-is:          Main.hs
   build-depends:
-    , base       ^>=4.15.1.0
+    , base       >=4.16.4 && <4.17
     , my-xmonad

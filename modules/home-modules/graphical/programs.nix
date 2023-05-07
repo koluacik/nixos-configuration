@@ -89,17 +89,27 @@ in
           type = types.bool;
           default = config.myHome.desktop.enable;
         };
+        excludedPrograms = mkOption {
+          type = types.listOf types.package;
+          default = [];
+        };
       });
 
   config =
     let enableGames = config.myHome.programs.graphical.games.enable;
     in
     {
-      home.packages =
+      home.packages = # add packages ...
         lists.flatten (map
-          (name: lists.optionals config.myHome.programs.graphical.${name}.enable programs.${name})
-          (attrNames programs)) ++
-        lists.optional enableGames pkgs.wineWowPackages.stable;
+          (categoryName:
+            let category = config.myHome.programs.graphical.${categoryName};
+                programsInCategory = programs.${categoryName};
+            in
+              filter
+                (packageName: !elem packageName category.excludedPrograms) # ... except the excluded ones
+                (lists.optionals category.enable programsInCategory)) # ... if the category is enabled
+          (attrNames programs)) # ... for each category
+        ++ lists.optional enableGames pkgs.wineWowPackages.stable; # ... and games
     };
 }
 

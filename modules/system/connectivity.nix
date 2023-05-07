@@ -18,7 +18,7 @@
   hardware.bluetooth = {
     enable = true;
     package = pkgs.bluez;
-    hsphfpd.enable = true;
+    hsphfpd.enable = !config.services.pipewire.wireplumber.enable;
   };
 
   services.blueman.enable = true;

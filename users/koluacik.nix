@@ -25,6 +25,12 @@
         ../modules/home-modules/graphical
         ../modules/home-modules/services
       ];
+
+      myHome.programs.graphical = {
+        drawing.enable = false;
+        ide.enable = false;
+        media.excludedPrograms = [ pkgs.spotify ];
+      };
     };
   };
 }
