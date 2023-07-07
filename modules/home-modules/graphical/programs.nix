@@ -59,7 +59,7 @@ let programs = {
     tabbed
     networkmanagerapplet
     feh
-    spectacle
+    gscreenshot
     ranger
     graphviz
     solaar
@@ -74,6 +74,7 @@ let programs = {
     jetbrains.pycharm-professional
     jetbrains.clion
     jetbrains.idea-ultimate
+    jetbrains.datagrip
   ];
 
   games = [ ]; # do not remove this

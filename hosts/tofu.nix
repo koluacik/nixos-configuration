@@ -17,6 +17,6 @@
   mySystem.xautolock.enable = false;
 
   virtualisation.docker.enable = true;
-  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enable = false;
   virtualisation.virtualbox.host.enableExtensionPack = true;
 }

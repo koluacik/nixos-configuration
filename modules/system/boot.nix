@@ -7,7 +7,6 @@
       enable = true;
       efiSupport = true;
       fsIdentifier = "label";
-      version = 2;
       device = "nodev";
       useOSProber = true;
     };

@@ -28,7 +28,7 @@
 
       myHome.programs.graphical = {
         drawing.enable = false;
-        ide.enable = false;
+        ide.enable = true;
         media.excludedPrograms = [ pkgs.spotify ];
       };
     };

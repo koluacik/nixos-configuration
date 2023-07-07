@@ -17,7 +17,7 @@ let
       }
       {
         delay = notifyTime;
-        command = "${pkgs.xlockmore}/bin/xlock";
+        command = "${pkgs.xlockmore}/bin/xlock -mode goop";
       }
       {
         delay = suspendTime - lockTime - notifyTime;
