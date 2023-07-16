@@ -31,6 +31,11 @@
           specialArgs = inputs // {systemFlake = self;};
           modules = [ ./hosts/tofu.nix ];
         };
+        tempeh = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = inputs // {systemFlake = self;};
+          modules = [ ./hosts/tempeh.nix ];
+        };
       };
 
       legacyPackages.${system} = pkgs;

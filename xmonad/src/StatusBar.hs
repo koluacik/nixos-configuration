@@ -12,8 +12,8 @@ addStatusBar = dynamicSBs (pure . sbOfScreen)
 sbOfScreen :: ScreenId -> StatusBarConfig
 sbOfScreen (S sid) =
   let xmobarBin = "xmobar"
-      configs = ("$HOME/.config/xmobar/xmobarrc_" <>) <$> ["0", "1"]
-   in if sid < 2
+      configs = ("$HOME/xmobar/xmobarrc_" <>) <$> ["0", "1", "2"]
+   in if sid < 3
         then
           statusBarPropTo
             ("_XMONAD_LOG_" <> show sid)

@@ -16,6 +16,7 @@ with lib;
     home.file = {
       "xmobar/xmobarrc_0".source = ../../../xmonad/xmobarrc_0;
       "xmobar/xmobarrc_1".source = ../../../xmonad/xmobarrc_1;
+      "xmobar/xmobarrc_2".source = ../../../xmonad/xmobarrc_2;
     };
   };
 }
