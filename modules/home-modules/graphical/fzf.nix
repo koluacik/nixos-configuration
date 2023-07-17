@@ -10,7 +10,7 @@
     changeDirWidgetCommand = "fd -L --type d";
     changeDirWidgetOptions = [ "--preview 'tree -C {} | head -200'" ];
     defaultCommand = "fd --type f";
-    fileWidgetCommand = "fd -L --type f";
+    fileWidgetCommand = "fd -L --type f --type d";
     fileWidgetOptions = [ "--preview 'bat {}'" ];
   };
 }
