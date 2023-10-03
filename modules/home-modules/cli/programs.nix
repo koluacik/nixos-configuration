@@ -3,34 +3,37 @@ with pkgs;
 with lib;
 let programs = {
   dev = [
+    gcc
     jdk
     man-pages
     man-pages-posix
     patchelf
-    # poetry
-    valgrind
-    gcc
     postgresql
+    valgrind
   ];
 
   nix-utils = [
     nixfmt
     nix-index
     nix-prefetch-github
-    # fd
   ];
 
   utils = [
-    lsof
-    whois
-    unzip
-    tree
-    tmux
-    killall
-    htop
-    file
+    awscli2
+    dig
     fd
+    file
     gh
+    htop
+    killall
+    lsof
+    nmap
+    openfortivpn
+    pciutils
+    tmux
+    tree
+    unzip
+    whois
   ];
 
 };

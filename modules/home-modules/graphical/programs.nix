@@ -22,17 +22,16 @@ let programs = {
   ];
 
   media = [
-    mpv
-    spotify
     libreoffice-fresh
-    zathura
+    mpv
     qbittorrent
+    spotify
+    zathura
   ];
 
   password = [
     _1password
     _1password-gui
-    keepassxc
   ];
 
   xutils = [
@@ -49,21 +48,24 @@ let programs = {
     xdotool
     xdragon
     xf86_input_wacom
+    xorg.xev
     xorg.xwininfo
     xsel
   ];
 
   utils = [
+    feh
+    graphviz
+    gscreenshot
+    networkmanagerapplet
     pavucontrol
     playerctl
-    tabbed
-    networkmanagerapplet
-    feh
-    gscreenshot
-    ranger
-    graphviz
-    solaar
     pulseaudio # for pactl
+    ranger
+    solaar
+    tabbed
+    todoist-electron
+    workrave
   ];
 
   latex = [
@@ -71,10 +73,10 @@ let programs = {
   ];
 
   ide = [
-    jetbrains.pycharm-professional
     jetbrains.clion
-    jetbrains.idea-ultimate
     jetbrains.datagrip
+    jetbrains.idea-ultimate
+    jetbrains.pycharm-professional
   ];
 
   games = [ ]; # do not remove this
@@ -92,7 +94,7 @@ in
         };
         excludedPrograms = mkOption {
           type = types.listOf types.package;
-          default = [];
+          default = [ ];
         };
       });
 
@@ -101,15 +103,17 @@ in
     in
     {
       home.packages = # add packages ...
-        lists.flatten (map
-          (categoryName:
-            let category = config.myHome.programs.graphical.${categoryName};
+        lists.flatten
+          (map
+            (categoryName:
+              let
+                category = config.myHome.programs.graphical.${categoryName};
                 programsInCategory = programs.${categoryName};
-            in
+              in
               filter
                 (packageName: !elem packageName category.excludedPrograms) # ... except the excluded ones
                 (lists.optionals category.enable programsInCategory)) # ... if the category is enabled
-          (attrNames programs)) # ... for each category
+            (attrNames programs)) # ... for each category
         ++ lists.optional enableGames pkgs.wineWowPackages.stable; # ... and games
     };
 }

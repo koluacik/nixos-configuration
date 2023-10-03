@@ -21,6 +21,8 @@
     hsphfpd.enable = !config.services.pipewire.wireplumber.enable;
   };
 
+  environment.systemPackages = [ pkgs.networkmanager-fortisslvpn ];
+
   services.blueman.enable = true;
 
   programs.ssh.startAgent = true;

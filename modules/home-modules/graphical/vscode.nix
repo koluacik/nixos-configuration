@@ -6,14 +6,20 @@
       enable = true;
       extensions = with pkgs.vscode-extensions; [
         eamodio.gitlens
+
         yzhang.markdown-all-in-one
+
         haskell.haskell
-        arrterian.nix-env-selector
-        jnoortheen.nix-ide
         justusadam.language-haskell
+
+        jnoortheen.nix-ide
         mkhl.direnv
-        github.github-vscode-theme
+
         ms-vscode.cpptools
+        vadimcn.vscode-lldb
+
+        tamasfe.even-better-toml
+        mechatroner.rainbow-csv
       ];
     };
   };

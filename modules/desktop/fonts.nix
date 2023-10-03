@@ -1,9 +1,9 @@
 { pkgs, config, ... }:
 {
   fonts = {
-    enableDefaultFonts = true;
+    enableDefaultPackages = true;
     fontDir.enable = true;
-    fonts = with pkgs; [
+    packages = with pkgs; [
       fira-code
       fira-code-symbols
       hack-font

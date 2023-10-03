@@ -10,19 +10,19 @@ let
   socketPath = "$XDG_RUNTIME_DIR/xidlehook.sock";
 
   timers = [
-      {
-        delay = lockTime - notifyTime;
-        command = "${pkgs.libnotify}/bin/notify-send \"Locking screen in ${builtins.toString notifyTime} seconds\"";
-        canceller = "dunstctl close";
-      }
-      {
-        delay = notifyTime;
-        command = "${pkgs.xlockmore}/bin/xlock -mode goop";
-      }
-      {
-        delay = suspendTime - lockTime - notifyTime;
-        command = "/run/current-system/systemd/bin/systemctl suspend";
-      }
+    {
+      delay = lockTime - notifyTime;
+      command = "${pkgs.libnotify}/bin/notify-send \"Locking screen in ${builtins.toString notifyTime} seconds\"";
+      canceller = "${pkgs.dunst}/bin/dunstctl close";
+    }
+    {
+      delay = notifyTime;
+      command = "${pkgs.xlockmore}/bin/xlock -mode goop";
+    }
+    {
+      delay = suspendTime - lockTime - notifyTime;
+      command = "/run/current-system/systemd/bin/systemctl suspend";
+    }
   ];
 
   toTimer = timer:
@@ -34,16 +34,21 @@ let
     }";
 
   script = pkgs.writeShellScript "xidlehook"
-  ''
-  ${lib.concatStringsSep " " [
-    "${pkgs.xidlehook}/bin/xidlehook"
-    "--not-when-audio"
-    "--not-when-fullscreen"
-    "--detect-sleep"
-    "--socket ${socketPath}"
-    "${lib.concatMapStringsSep " " toTimer timers}"
-  ]}
-  '';
+    ''
+      ${lib.concatStringsSep " " [
+        "${pkgs.xidlehook}/bin/xidlehook"
+        "--not-when-audio"
+        "--not-when-fullscreen"
+        "--detect-sleep"
+        "--socket ${socketPath}"
+        "${lib.concatMapStringsSep " " toTimer timers}"
+      ]}
+    '';
+
+  lock = pkgs.writeShellScriptBin "lock"
+    ''
+      ${pkgs.xidlehook}/bin/xidlehook-client --socket ${socketPath} control --action Trigger --timer 1
+    '';
 
 in
 with lib;
@@ -54,7 +59,7 @@ with lib;
       default = true;
     };
   config = mkIf config.myHome.xidlehook.enable {
-    home.packages = [ pkgs.xidlehook ];
+    home.packages = [ pkgs.xidlehook lock ];
     systemd.user.services.xidlehook = {
       Unit = {
         Description = "xidlehook service";

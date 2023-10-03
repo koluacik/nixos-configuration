@@ -9,12 +9,30 @@
     ./../modules/devices/pavilion.nix
     ./../modules/desktop
     ./../modules/nix
+    ./hostOverridesForHomeManager.nix
 
     home-manager.nixosModules.home-manager
     ./../users/koluacik.nix
   ];
 
   mySystem.xautolock.enable = false;
+
+  mySystem.hostOverridesForHomeManager = {
+    myHome = {
+      desktop.enable = true;
+      programs.graphical = {
+        latex.enable = false;
+        ide = {
+          enable = false;
+        };
+        media.excludedPrograms = [ pkgs.spotify ];
+      };
+      programs.cli = {
+        utils.excludedPrograms = [ pkgs.awscli2 ];
+        dev.excludedPrograms = [ pkgs.postgresql ];
+      };
+    };
+  };
 
   virtualisation.docker.enable = true;
   virtualisation.virtualbox.host.enable = false;
