@@ -2,6 +2,11 @@
 with pkgs;
 with lib;
 let programs = {
+  cloud = [
+    awscli2
+    google-cloud-sdk
+  ];
+
   dev = [
     gcc
     jdk
@@ -19,7 +24,6 @@ let programs = {
   ];
 
   utils = [
-    awscli2
     dig
     fd
     file
