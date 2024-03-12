@@ -28,7 +28,7 @@
         media.excludedPrograms = [ pkgs.spotify ];
       };
       programs.cli = {
-        cloud.enabled = false;
+        cloud.enable = false;
         dev.excludedPrograms = [ pkgs.postgresql ];
       };
     };

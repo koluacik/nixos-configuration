@@ -8,15 +8,12 @@
       keep-outputs = true
       experimental-features = nix-command flakes
     '';
-    registry = {
-      nixpkgs.flake = systemFlake;
-    };
     nixPath = [
       ("nixpkgs-overlays=" + systemFlake.outPath + "/overlays-compat")
-      "nixpkgs=/etc/nix/inputs/nixpkgs"
+      # "nixpkgs=/etc/nix/inputs/nixpkgs"
     ];
   };
 
-  environment.etc."nix/inputs/nixpkgs".source = systemFlake.inputs.nixpkgs.outPath;
+  # environment.etc."nix/inputs/nixpkgs".source = systemFlake.inputs.nixpkgs.outPath;
 
 }

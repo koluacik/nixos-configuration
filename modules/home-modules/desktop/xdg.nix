@@ -13,12 +13,12 @@
     templates = "$HOME/documents/templates";
     videos = "$HOME/documents/videos";
   };
-  xdg.mimeApps.defaultApplications = {
-    "image/jpeg" = [ "org.qutebrowser.qutebrowser.desktop" ];
-    "image/jpg" = [ "org.qutebrowser.qutebrowser.desktop" ];
-    "image/png" = [ "org.qutebrowser.qutebrowser.desktop" ];
-    "inode/directory" = [ "ranger.desktop" ];
-  };
-  xdg.dataFile."applications/org.qutebrowser.qutebrowser.desktop".source = "${pkgs.qutebrowser}/share/applications/org.qutebrowser.qutebrowser.desktop";
+  # xdg.mimeApps.defaultApplications = {
+  #   "image/jpeg" = [ "org.qutebrowser.qutebrowser.desktop" ];
+  #   "image/jpg" = [ "org.qutebrowser.qutebrowser.desktop" ];
+  #   "image/png" = [ "org.qutebrowser.qutebrowser.desktop" ];
+  #   "inode/directory" = [ "ranger.desktop" ];
+  # };
+  # xdg.dataFile."applications/org.qutebrowser.qutebrowser.desktop".source = "${pkgs.qutebrowser}/share/applications/org.qutebrowser.qutebrowser.desktop";
 }
 

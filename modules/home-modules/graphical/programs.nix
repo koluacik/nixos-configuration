@@ -79,6 +79,11 @@ let programs = {
     jetbrains.pycharm-professional
   ];
 
+  dev = [
+    robo3t
+    mongodb-compass
+  ];
+
   games = [ ]; # do not remove this
 };
 

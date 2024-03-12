@@ -5,21 +5,21 @@
     programs.vscode = {
       enable = true;
       extensions = with pkgs.vscode-extensions; [
-        eamodio.gitlens
+        # eamodio.gitlens
 
-        yzhang.markdown-all-in-one
+        # yzhang.markdown-all-in-one
 
-        haskell.haskell
-        justusadam.language-haskell
+        # haskell.haskell
+        # justusadam.language-haskell
 
-        jnoortheen.nix-ide
-        mkhl.direnv
+        # jnoortheen.nix-ide
+        # mkhl.direnv
 
-        ms-vscode.cpptools
-        vadimcn.vscode-lldb
+        # ms-vscode.cpptools
+        # vadimcn.vscode-lldb
 
-        tamasfe.even-better-toml
-        mechatroner.rainbow-csv
+        # tamasfe.even-better-toml
+        # mechatroner.rainbow-csv
       ];
     };
   };

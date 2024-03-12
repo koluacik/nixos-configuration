@@ -23,14 +23,18 @@
     myHome = {
       desktop.enable = true;
       programs.graphical = {
-        im.excludedPrograms = [ pkgs.thunderbird ];
+        im.excludedPrograms = [
+          pkgs.thunderbird
+          pkgs.slack
+          pkgs.tdesktop
+        ];
         latex.enable = false;
         drawing.enable = false;
-        ide = {
-          enable = true;
-          excludedPrograms = [ pkgs.jetbrains.clion ];
-        };
-        media.excludedPrograms = [ pkgs.spotify ];
+        browsers.excludedPrograms = [ pkgs.qutebrowser ];
+        media.excludedPrograms = [
+          pkgs.spotify
+          pkgs.libreoffice-fresh
+        ];
       };
     };
   };

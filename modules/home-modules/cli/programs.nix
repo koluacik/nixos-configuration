@@ -19,8 +19,10 @@ let programs = {
 
   nix-utils = [
     nixfmt
+    nix-du
     nix-index
     nix-prefetch-github
+    nix-tree
   ];
 
   utils = [
@@ -51,12 +53,23 @@ in
           type = types.bool;
           default = true;
         };
+        excludedPrograms = mkOption {
+          type = types.listOf types.package;
+          default = [ ];
+        };
       });
 
   config = {
     home.packages =
       lists.flatten (map
-        (name: lists.optionals config.myHome.programs.cli.${name}.enable programs.${name})
+        (categoryName:
+          let
+            category = config.myHome.programs.cli.${categoryName};
+            programsInCategory = programs.${categoryName};
+          in
+          filter
+            (packageName: !elem packageName category.excludedPrograms)
+            (lists.optionals category.enable programsInCategory))
         (attrNames programs));
   };
 }
