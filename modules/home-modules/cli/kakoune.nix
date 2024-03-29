@@ -30,7 +30,7 @@
       [
         jq
         ripgrep
-        rnix-lsp
+        # rnix-lsp
         kakoune-cr
         (kakoune.override {
           plugins = with kakounePlugins; [
@@ -48,4 +48,3 @@
     home.file.".config/kak/kakrc/".source = ../../../home/kakoune/kakrc.kak;
   };
 }
-
