@@ -36,6 +36,11 @@
           specialArgs = inputs // {systemFlake = self;};
           modules = [ ./hosts/tempeh.nix ];
         };
+        semruk = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = inputs // {systemFlake = self;};
+          modules = [ ./hosts/semruk.nix ];
+        };
       };
 
       legacyPackages.${system} = pkgs;
