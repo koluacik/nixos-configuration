@@ -36,7 +36,7 @@
           plugins = with kakounePlugins; [
             fzf-kak
             kak-ansi
-            kak-lsp
+            kakoune-lsp
             kakoune-buffers
             kakoune-registers
             kak-surround

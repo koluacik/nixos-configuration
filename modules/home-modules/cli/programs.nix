@@ -18,11 +18,11 @@ let programs = {
   ];
 
   nix-utils = [
-    nixfmt
     nix-du
     nix-index
     nix-prefetch-github
     nix-tree
+    nixfmt-classic
   ];
 
   utils = [

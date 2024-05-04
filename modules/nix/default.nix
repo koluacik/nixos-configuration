@@ -3,7 +3,7 @@
 
   nix = {
     channel.enable = false;
-    package = pkgs.nixUnstable;
+    package = pkgs.nixVersions.latest;
     extraOptions = ''
       keep-outputs = true
       experimental-features = nix-command flakes
