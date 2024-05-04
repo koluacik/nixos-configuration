@@ -84,7 +84,11 @@ let programs = {
     mongodb-compass
   ];
 
-  games = [ ]; # do not remove this
+  games = [
+    wineWowPackages.stable
+    winetricks
+    lutris
+  ];
 };
 
 in
@@ -104,8 +108,6 @@ in
       });
 
   config =
-    let enableGames = config.myHome.programs.graphical.games.enable;
-    in
     {
       home.packages = # add packages ...
         lists.flatten
@@ -118,8 +120,7 @@ in
               filter
                 (packageName: !elem packageName category.excludedPrograms) # ... except the excluded ones
                 (lists.optionals category.enable programsInCategory)) # ... if the category is enabled
-            (attrNames programs)) # ... for each category
-        ++ lists.optional enableGames pkgs.wineWowPackages.stable; # ... and games
+            (attrNames programs)); # ... for each category
     };
 }
 
