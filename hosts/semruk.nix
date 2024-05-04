@@ -6,7 +6,7 @@
 
   imports = [
     ./../modules/system
-    ./../modules/devices/semruk.nix
+    ./../modules/devices/semruk_v9_2_3.nix
     ./../modules/desktop
     ./../modules/nix
     ./hostOverridesForHomeManager.nix
