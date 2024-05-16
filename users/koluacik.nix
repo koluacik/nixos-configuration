@@ -5,7 +5,7 @@
     isNormalUser = true;
     description = "Deniz Koluaçık";
     initialPassword = "password";
-    extraGroups = [ "docker" "networkmanager" "wheel" "wireshark" ];
+    extraGroups = [ "docker" "networkmanager" "wheel" "wireshark" "libvirtd" ];
   };
 
   home-manager = {
@@ -13,12 +13,13 @@
       inherit systemFlake;
       # Use this to override home configuration from the host configuration
       hostOverrides = config.mySystem.hostOverridesForHomeManager;
+      systemConfig = config;
     };
     useGlobalPkgs = true;
     useUserPackages = true;
     users.koluacik = lib.mkMerge [
       (
-        { config, pkgs, ... }:
+        { config, pkgs, systemConfig, ... }:
         {
           home.stateVersion = "18.09";
           imports = [

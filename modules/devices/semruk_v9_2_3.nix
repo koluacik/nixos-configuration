@@ -20,8 +20,6 @@
     driSupport32Bit = true;
   };
 
-  services.xserver.wacom.enable = true;
-
   hardware.nvidia = {
     modesetting.enable = true;
     nvidiaSettings = true;

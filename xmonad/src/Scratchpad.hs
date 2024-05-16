@@ -11,7 +11,7 @@ data ScratchpadMembers = ScratchpadTerminal
   deriving (Eq, Show, Ord)
 
 addScratchpads :: XConfig l -> XConfig l
-addScratchpads config@(XConfig {manageHook}) = config {manageHook = idHook <+> manageHook}
+addScratchpads config@(XConfig {manageHook}) = config {manageHook = namedScratchpadManageHook scratchpads <+> manageHook}
 
 scratchpads :: [NamedScratchpad]
 scratchpads =

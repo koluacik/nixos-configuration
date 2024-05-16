@@ -39,6 +39,11 @@
     };
   };
 
+  services.xserver.wacom.enable = true;
+
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable=true;
+
   virtualisation.docker.enable = true;
   virtualisation.virtualbox.host.enable = false;
   virtualisation.virtualbox.host.enableExtensionPack = true;

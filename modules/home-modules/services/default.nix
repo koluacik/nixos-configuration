@@ -6,6 +6,7 @@ with lib;
     ./dunst.nix
     ./env.nix
     ./gpg.nix
+    ./virt-manager.nix
     ./xidlehook.nix
   ];
 }
