@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs ? import <nixpkgs> {} }:
 
 pkgs.mkShell {
   nativeBuildInputs = with pkgs; [
@@ -9,6 +9,7 @@ pkgs.mkShell {
     (haskellPackages.ghcWithHoogle (hp: with hp; [
       xmonad
       xmonad-contrib
+      # aeson
     ]))
   ];
 }

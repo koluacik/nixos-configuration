@@ -14,15 +14,17 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit  = true;
   };
 
   hardware.nvidia = {
     modesetting.enable = true;
     nvidiaSettings = true;
+    open = false;
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
     prime = {
       sync.enable = true;
       intelBusId = "PCI:0:2:0";

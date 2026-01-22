@@ -4,11 +4,16 @@
   programs.git = {
     enable = true;
     signing = {
-      key = "40AE2767863EF879927FBC75C6BB346850E0D930";
+      key = "E06372F7277AFE56497B956E1F07E7AC4647BB25";
       signByDefault = true;
     };
-    userEmail = "koluacik@disroot.org";
-    userName = "Deniz Koluacik";
-    extraConfig.init.defaultBranch = "main";
+
+    settings = {
+      user = {
+        email = "koluacik@disroot.org";
+        name = "Deniz Koluacik";
+        init.defaultBranch = "main";
+      };
+    };
   };
 }

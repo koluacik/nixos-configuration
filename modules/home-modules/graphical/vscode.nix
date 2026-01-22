@@ -4,7 +4,7 @@
   config = mkIf config.myHome.vscode.enable {
     programs.vscode = {
       enable = true;
-      extensions = with pkgs.vscode-extensions; [
+      profiles.default.extensions = with pkgs.vscode-extensions; [
         # eamodio.gitlens
 
         # yzhang.markdown-all-in-one

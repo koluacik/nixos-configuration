@@ -30,7 +30,7 @@ let programs = {
   ];
 
   password = [
-    _1password
+    _1password-cli
     _1password-gui
   ];
 

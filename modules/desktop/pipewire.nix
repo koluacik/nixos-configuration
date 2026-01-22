@@ -2,7 +2,7 @@
 with lib;
 {
   config = mkIf config.mySystem.desktop.enable {
-    hardware.pulseaudio.enable = false;
+    services.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;

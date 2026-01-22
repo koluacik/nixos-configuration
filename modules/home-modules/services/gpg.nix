@@ -8,7 +8,7 @@ with lib; {
   config = mkIf config.myHome.gpg.enable {
     services.gpg-agent = {
       enable = true;
-      pinentryPackage = if config.myHome.desktop.enable then
+      pinentry.package = if config.myHome.desktop.enable then
         pkgs.pinentry-gtk2
       else
         pkgs.pinentry-tty;
