@@ -22,7 +22,8 @@
   hardware.nvidia = {
     modesetting.enable = true;
     nvidiaSettings = true;
-    open = false;
+    open = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
     powerManagement.enable = false;
     powerManagement.finegrained = false;
     prime = {
@@ -31,12 +32,6 @@
       nvidiaBusId = "PCI:1:0:0";
     };
   };
-
-  services.xserver.screenSection = ''
-    Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
-    Option         "AllowIndirectGLXProtocol" "off"
-    Option         "TripleBuffer" "on"
-  '';
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
