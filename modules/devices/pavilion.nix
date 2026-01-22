@@ -4,13 +4,22 @@
 
   imports = [ (nixpkgs + "/nixos/modules/installer/scan/not-detected.nix") ];
 
-  # Nvidia sync mode
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.prime = {
-    sync.enable = true;
-    intelBusId = "PCI:0:2:0";
-    nvidiaBusId = "PCI:1:0:0";
+  hardware.nvidia = {
+    modesetting.enable = true;
+    nvidiaSettings = true;
+    open = false;
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
+    prime = {
+      sync.enable = true;
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+  };
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit  = true;
   };
 
   services.xserver.screenSection = ''
@@ -18,14 +27,10 @@
     Option         "AllowIndirectGLXProtocol" "off"
     Option         "TripleBuffer" "on"
   '';
-  hardware.nvidia.powerManagement.enable = true;
 
-  hardware.opengl.enable = true;
-  hardware.opengl.driSupport32Bit = true;
-  hardware.opengl.driSupport = true;
 
   services.xserver.wacom.enable = true;
-  services.xserver.libinput.touchpad.naturalScrolling = true;
+  services.libinput.touchpad.naturalScrolling = true;
 
   boot.supportedFilesystems = [ "ntfs" ];
 
@@ -34,25 +39,6 @@
   services.fstrim.enable = true;
 
   powerManagement.cpuFreqGovernor = pkgs.lib.mkDefault "performance";
-
-  specialisation = {
-    battery-optimized = with pkgs.lib; {
-      configuration = {
-        powerManagement.cpuFreqGovernor = mkForce "powersave";
-        boot.kernelParams = [ "module_blacklist=nouveau" "module_blacklist=nvidiafb" ];
-        hardware.nvidia.modesetting.enable = mkForce false;
-        hardware.nvidia.prime.sync.enable = mkForce false;
-        hardware.nvidiaOptimus.disable = true;
-        services.xserver = {
-          videoDrivers = mkForce [ "modesetting" ];
-          deviceSection = ''
-            Option "DRI" "2"
-            Option "TearFree" "true"
-          '';
-        };
-      };
-    };
-  };
 
   services.upower = {
     enable = true;
