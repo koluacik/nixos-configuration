@@ -10,7 +10,6 @@ let programs = {
   im = [
     discord
     slack
-    tdesktop
     thunderbird
     zoom-us
   ];
@@ -38,15 +37,15 @@ let programs = {
     arandr
     autorandr
     brightnessctl
+    dragon-drop
     ffmpeg
     ffmpegthumbnailer
     libnotify
     lxappearance
-    poppler_utils
+    poppler-utils
     ueberzug
     xclip
     xdotool
-    xdragon
     xf86_input_wacom
     xorg.xev
     xorg.xwininfo
@@ -75,8 +74,8 @@ let programs = {
   ide = [
     jetbrains.clion
     jetbrains.datagrip
-    jetbrains.idea-ultimate
-    jetbrains.pycharm-professional
+    jetbrains.idea
+    jetbrains.pycharm
   ];
 
   dev = [

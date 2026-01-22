@@ -26,7 +26,6 @@
         im.excludedPrograms = [
           pkgs.thunderbird
           pkgs.slack
-          pkgs.tdesktop
         ];
         latex.enable = false;
         drawing.enable = false;

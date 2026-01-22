@@ -22,7 +22,7 @@ let programs = {
     nix-index
     nix-prefetch-github
     nix-tree
-    nixfmt-classic
+    nixfmt
   ];
 
   utils = [
